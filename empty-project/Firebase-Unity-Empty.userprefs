@@ -1,0 +1,44 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/iOS/FirebaseErroriOSImpl.cs">
+    <Files>
+      <File FileName="Assets/TestScript.cs" Line="21" Column="33" />
+      <File FileName="Assets/Plugins/Android/QueryAndroidImpl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/Editor/QueryEditorImpl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/Editor/FirebaseEditorImpl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/Editor/Startup.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/Firebase/FirebaseError.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/Firebase/Firebase.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/iOS/FirebaseiOSImpl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/Android/DataSnapshotAndroidImpl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/Firebase/IQuery.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/Android/FirebaseErrorAndroidImpl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/Android/FirebaseAndroidImpl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/Firebase/AuthData.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/iOS/DataSnapshotiOSImpl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/iOS/FirebaseErroriOSImpl.cs" Line="5" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp-Editor-firstpass" expanded="True">
+            <Node name="Plugins" expanded="True" />
+          </Node>
+          <Node name="Assembly-CSharp-firstpass" expanded="True">
+            <Node name="Plugins" expanded="True">
+              <Node name="Android" expanded="True" />
+              <Node name="Firebase" expanded="True" />
+              <Node name="iOS" expanded="True">
+                <Node name="FirebaseErroriOSImpl.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

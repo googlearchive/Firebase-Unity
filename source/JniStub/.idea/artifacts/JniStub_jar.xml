@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JniStub:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JniStub_jar</output-path>
+    <root id="archive" name="JniStub.jar">
+      <element id="module-output" name="JniStub" />
+    </root>
+  </artifact>
+</component>

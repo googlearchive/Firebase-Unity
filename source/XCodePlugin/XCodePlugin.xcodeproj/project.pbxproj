@@ -1,0 +1,384 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6A3F7F8310AC147200948A73 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6A3F7D2310AAFB3D00948A73 /* Plugin.cpp */; };
+		FF3822681B8E42CE00F4625B /* JniValueEventStub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF3822661B8E42CE00F4625B /* JniValueEventStub.cpp */; };
+		FF38226B1B8E42E100F4625B /* JniChildEventStub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF3822691B8E42E100F4625B /* JniChildEventStub.cpp */; };
+		FF38226E1B8E5A3700F4625B /* JniDataSnapshot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF38226C1B8E5A3700F4625B /* JniDataSnapshot.cpp */; };
+		FF3A97D91B84DCE60033A441 /* libjvm.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3A97D81B84DCE60033A441 /* libjvm.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
+		FF3A97DE1B89E7FA0033A441 /* JniFirebase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF3A97DC1B89E7FA0033A441 /* JniFirebase.cpp */; };
+		FF3A97E11B8A4A1B0033A441 /* JniHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF3A97E01B8A4A1B0033A441 /* JniHelper.cpp */; };
+		FF3A97E41B8A548F0033A441 /* JniFloat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF3A97E21B8A548F0033A441 /* JniFloat.cpp */; };
+		FF3A97E91B8B6EE50033A441 /* jnistub_ValueEventListenerStub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF3A97E81B8B6EE50033A441 /* jnistub_ValueEventListenerStub.cpp */; };
+		FF3A97EB1B8B6F520033A441 /* jnistub_ChildEventListenerStub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF3A97EA1B8B6F520033A441 /* jnistub_ChildEventListenerStub.cpp */; };
+		FFA743171B962B2F0064A5C0 /* JniEventProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFA743151B962B2F0064A5C0 /* JniEventProcessor.cpp */; };
+		FFBF0ABE1BA2205300A4DE52 /* jnistub_AuthAnonymousStub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFBF0ABD1BA2205300A4DE52 /* jnistub_AuthAnonymousStub.cpp */; };
+		FFBF0AC01BA2206C00A4DE52 /* jnistub_AuthCustomTokenStub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFBF0ABF1BA2206C00A4DE52 /* jnistub_AuthCustomTokenStub.cpp */; };
+		FFBF0AC21BA2208C00A4DE52 /* jnistub_AuthOAuthStub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFBF0AC11BA2208C00A4DE52 /* jnistub_AuthOAuthStub.cpp */; };
+		FFBF0AC41BA220A900A4DE52 /* jnistub_AuthPasswordStub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFBF0AC31BA220A900A4DE52 /* jnistub_AuthPasswordStub.cpp */; };
+		FFBF0ACA1BA363B600A4DE52 /* JniAuth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFBF0AC81BA363B600A4DE52 /* JniAuth.cpp */; };
+		FFBF0ACD1BA363C800A4DE52 /* JniFirebaseError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFBF0ACB1BA363C800A4DE52 /* JniFirebaseError.cpp */; };
+		FFBF0AD01BA36ACB00A4DE52 /* JniEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FFBF0ACE1BA36ACB00A4DE52 /* JniEvent.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		32BAE0B30371A71500C91783 /* Plugin.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plugin.pch; sourceTree = "<group>"; };
+		6A3F7D2310AAFB3D00948A73 /* Plugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plugin.cpp; sourceTree = "<group>"; };
+		6A3F7F7E10AC146D00948A73 /* FirebaseProxy.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirebaseProxy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A3F7F7F10AC146D00948A73 /* FirebaseProxy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FirebaseProxy.plist; sourceTree = "<group>"; };
+		8D01CCD10486CAD60068D4B7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FF3822641B8E3DCE00F4625B /* jnistub_ValueEventListenerStub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jnistub_ValueEventListenerStub.h; sourceTree = "<group>"; };
+		FF3822651B8E3DD900F4625B /* jnistub_ChildEventListenerStub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jnistub_ChildEventListenerStub.h; sourceTree = "<group>"; };
+		FF3822661B8E42CE00F4625B /* JniValueEventStub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JniValueEventStub.cpp; sourceTree = "<group>"; };
+		FF3822671B8E42CE00F4625B /* JniValueEventStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JniValueEventStub.h; sourceTree = "<group>"; };
+		FF3822691B8E42E100F4625B /* JniChildEventStub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JniChildEventStub.cpp; sourceTree = "<group>"; };
+		FF38226A1B8E42E100F4625B /* JniChildEventStub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JniChildEventStub.h; sourceTree = "<group>"; };
+		FF38226C1B8E5A3700F4625B /* JniDataSnapshot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JniDataSnapshot.cpp; sourceTree = "<group>"; };
+		FF38226D1B8E5A3700F4625B /* JniDataSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JniDataSnapshot.h; sourceTree = "<group>"; };
+		FF3A97D81B84DCE60033A441 /* libjvm.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjvm.dylib; path = ../../../../../Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/server/libjvm.dylib; sourceTree = "<group>"; };
+		FF3A97DA1B84DD0C0033A441 /* libjsig.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjsig.dylib; path = ../../../../../Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/server/libjsig.dylib; sourceTree = "<group>"; };
+		FF3A97DC1B89E7FA0033A441 /* JniFirebase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JniFirebase.cpp; sourceTree = "<group>"; };
+		FF3A97DD1B89E7FA0033A441 /* JniFirebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JniFirebase.h; sourceTree = "<group>"; };
+		FF3A97DF1B89E9130033A441 /* JniHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JniHelper.h; sourceTree = "<group>"; };
+		FF3A97E01B8A4A1B0033A441 /* JniHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JniHelper.cpp; sourceTree = "<group>"; };
+		FF3A97E21B8A548F0033A441 /* JniFloat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JniFloat.cpp; sourceTree = "<group>"; };
+		FF3A97E31B8A548F0033A441 /* JniFloat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JniFloat.h; sourceTree = "<group>"; };
+		FF3A97E81B8B6EE50033A441 /* jnistub_ValueEventListenerStub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jnistub_ValueEventListenerStub.cpp; sourceTree = "<group>"; };
+		FF3A97EA1B8B6F520033A441 /* jnistub_ChildEventListenerStub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jnistub_ChildEventListenerStub.cpp; sourceTree = "<group>"; };
+		FFA743151B962B2F0064A5C0 /* JniEventProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JniEventProcessor.cpp; sourceTree = "<group>"; };
+		FFA743161B962B2F0064A5C0 /* JniEventProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JniEventProcessor.h; sourceTree = "<group>"; };
+		FFBF0AB91BA21FF800A4DE52 /* jnistub_AuthAnonymousStub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jnistub_AuthAnonymousStub.h; sourceTree = "<group>"; };
+		FFBF0ABA1BA21FF800A4DE52 /* jnistub_AuthCustomTokenStub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jnistub_AuthCustomTokenStub.h; sourceTree = "<group>"; };
+		FFBF0ABB1BA21FF800A4DE52 /* jnistub_AuthOAuthStub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jnistub_AuthOAuthStub.h; sourceTree = "<group>"; };
+		FFBF0ABC1BA21FF800A4DE52 /* jnistub_AuthPasswordStub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jnistub_AuthPasswordStub.h; sourceTree = "<group>"; };
+		FFBF0ABD1BA2205300A4DE52 /* jnistub_AuthAnonymousStub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jnistub_AuthAnonymousStub.cpp; sourceTree = "<group>"; };
+		FFBF0ABF1BA2206C00A4DE52 /* jnistub_AuthCustomTokenStub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jnistub_AuthCustomTokenStub.cpp; sourceTree = "<group>"; };
+		FFBF0AC11BA2208C00A4DE52 /* jnistub_AuthOAuthStub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jnistub_AuthOAuthStub.cpp; sourceTree = "<group>"; };
+		FFBF0AC31BA220A900A4DE52 /* jnistub_AuthPasswordStub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jnistub_AuthPasswordStub.cpp; sourceTree = "<group>"; };
+		FFBF0AC81BA363B600A4DE52 /* JniAuth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JniAuth.cpp; sourceTree = "<group>"; };
+		FFBF0AC91BA363B600A4DE52 /* JniAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JniAuth.h; sourceTree = "<group>"; };
+		FFBF0ACB1BA363C800A4DE52 /* JniFirebaseError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JniFirebaseError.cpp; sourceTree = "<group>"; };
+		FFBF0ACC1BA363C800A4DE52 /* JniFirebaseError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JniFirebaseError.h; sourceTree = "<group>"; };
+		FFBF0ACE1BA36ACB00A4DE52 /* JniEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JniEvent.cpp; sourceTree = "<group>"; };
+		FFBF0ACF1BA36ACB00A4DE52 /* JniEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JniEvent.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6A3F7F7C10AC146D00948A73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF3A97D91B84DCE60033A441 /* libjvm.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* XCodePlugin */ = {
+			isa = PBXGroup;
+			children = (
+				FF3A97DA1B84DD0C0033A441 /* libjsig.dylib */,
+				FF3A97D81B84DCE60033A441 /* libjvm.dylib */,
+				08FB77ADFE841716C02AAC07 /* Source */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
+				19C28FB4FE9D528D11CA2CBB /* Products */,
+				6A3F7F7F10AC146D00948A73 /* FirebaseProxy.plist */,
+			);
+			name = XCodePlugin;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D01CCD10486CAD60068D4B7 /* Info.plist */,
+				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77ADFE841716C02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				FF3A97E81B8B6EE50033A441 /* jnistub_ValueEventListenerStub.cpp */,
+				FF3822641B8E3DCE00F4625B /* jnistub_ValueEventListenerStub.h */,
+				FF3A97EA1B8B6F520033A441 /* jnistub_ChildEventListenerStub.cpp */,
+				FF3822651B8E3DD900F4625B /* jnistub_ChildEventListenerStub.h */,
+				FFBF0ABD1BA2205300A4DE52 /* jnistub_AuthAnonymousStub.cpp */,
+				FFBF0AB91BA21FF800A4DE52 /* jnistub_AuthAnonymousStub.h */,
+				FFBF0ABF1BA2206C00A4DE52 /* jnistub_AuthCustomTokenStub.cpp */,
+				FFBF0ABA1BA21FF800A4DE52 /* jnistub_AuthCustomTokenStub.h */,
+				FFBF0AC11BA2208C00A4DE52 /* jnistub_AuthOAuthStub.cpp */,
+				FFBF0ABB1BA21FF800A4DE52 /* jnistub_AuthOAuthStub.h */,
+				FFBF0AC31BA220A900A4DE52 /* jnistub_AuthPasswordStub.cpp */,
+				FFBF0ABC1BA21FF800A4DE52 /* jnistub_AuthPasswordStub.h */,
+				6A3F7D2310AAFB3D00948A73 /* Plugin.cpp */,
+				32BAE0B30371A71500C91783 /* Plugin.pch */,
+				FF3A97DC1B89E7FA0033A441 /* JniFirebase.cpp */,
+				FF3A97DD1B89E7FA0033A441 /* JniFirebase.h */,
+				FF3A97E01B8A4A1B0033A441 /* JniHelper.cpp */,
+				FF3A97DF1B89E9130033A441 /* JniHelper.h */,
+				FF3A97E21B8A548F0033A441 /* JniFloat.cpp */,
+				FF3A97E31B8A548F0033A441 /* JniFloat.h */,
+				FF3822661B8E42CE00F4625B /* JniValueEventStub.cpp */,
+				FF3822671B8E42CE00F4625B /* JniValueEventStub.h */,
+				FF3822691B8E42E100F4625B /* JniChildEventStub.cpp */,
+				FF38226A1B8E42E100F4625B /* JniChildEventStub.h */,
+				FF38226C1B8E5A3700F4625B /* JniDataSnapshot.cpp */,
+				FF38226D1B8E5A3700F4625B /* JniDataSnapshot.h */,
+				FFA743151B962B2F0064A5C0 /* JniEventProcessor.cpp */,
+				FFA743161B962B2F0064A5C0 /* JniEventProcessor.h */,
+				FFBF0ACE1BA36ACB00A4DE52 /* JniEvent.cpp */,
+				FFBF0ACF1BA36ACB00A4DE52 /* JniEvent.h */,
+				FFBF0AC81BA363B600A4DE52 /* JniAuth.cpp */,
+				FFBF0AC91BA363B600A4DE52 /* JniAuth.h */,
+				FFBF0ACB1BA363C800A4DE52 /* JniFirebaseError.cpp */,
+				FFBF0ACC1BA363C800A4DE52 /* JniFirebaseError.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		19C28FB4FE9D528D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6A3F7F7E10AC146D00948A73 /* FirebaseProxy.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6A3F7F7D10AC146D00948A73 /* FirebaseProxy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6A3F7F8210AC146D00948A73 /* Build configuration list for PBXNativeTarget "FirebaseProxy" */;
+			buildPhases = (
+				6A3F7F7A10AC146D00948A73 /* Resources */,
+				6A3F7F7B10AC146D00948A73 /* Sources */,
+				6A3F7F7C10AC146D00948A73 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FirebaseProxy;
+			productName = ASimplePlugin;
+			productReference = 6A3F7F7E10AC146D00948A73 /* FirebaseProxy.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = 4FADC23708B4156C00ABE55E /* Build configuration list for PBXProject "XCodePlugin" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 089C166AFE841209C02AAC07 /* XCodePlugin */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6A3F7F7D10AC146D00948A73 /* FirebaseProxy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6A3F7F7A10AC146D00948A73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6A3F7F7B10AC146D00948A73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF3822681B8E42CE00F4625B /* JniValueEventStub.cpp in Sources */,
+				FFBF0ACD1BA363C800A4DE52 /* JniFirebaseError.cpp in Sources */,
+				FF3A97E41B8A548F0033A441 /* JniFloat.cpp in Sources */,
+				FFBF0ACA1BA363B600A4DE52 /* JniAuth.cpp in Sources */,
+				FFBF0AD01BA36ACB00A4DE52 /* JniEvent.cpp in Sources */,
+				FFBF0AC41BA220A900A4DE52 /* jnistub_AuthPasswordStub.cpp in Sources */,
+				FF3A97EB1B8B6F520033A441 /* jnistub_ChildEventListenerStub.cpp in Sources */,
+				FF38226E1B8E5A3700F4625B /* JniDataSnapshot.cpp in Sources */,
+				FF38226B1B8E42E100F4625B /* JniChildEventStub.cpp in Sources */,
+				FF3A97E91B8B6EE50033A441 /* jnistub_ValueEventListenerStub.cpp in Sources */,
+				FFBF0AC01BA2206C00A4DE52 /* jnistub_AuthCustomTokenStub.cpp in Sources */,
+				FF3A97E11B8A4A1B0033A441 /* JniHelper.cpp in Sources */,
+				FFBF0ABE1BA2205300A4DE52 /* jnistub_AuthAnonymousStub.cpp in Sources */,
+				FF3A97DE1B89E7FA0033A441 /* JniFirebase.cpp in Sources */,
+				6A3F7F8310AC147200948A73 /* Plugin.cpp in Sources */,
+				FFBF0AC21BA2208C00A4DE52 /* jnistub_AuthOAuthStub.cpp in Sources */,
+				FFA743171B962B2F0064A5C0 /* JniEventProcessor.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C167DFE841241C02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C167EFE841241C02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4FADC23808B4156C00ABE55E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Debug;
+		};
+		4FADC23908B4156C00ABE55E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+		6A3F7F8010AC146D00948A73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/include/darwin,
+					/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/include,
+				);
+				INFOPLIST_FILE = FirebaseProxy.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				LD_RUNPATH_SEARCH_PATHS = /Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Libraries;
+				LIBRARY_SEARCH_PATHS = (
+					/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Libraries,
+					"$(LOCAL_LIBRARY_DIR)/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Libraries",
+				);
+				"OTHER_CFLAGS[arch=*]" = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Carbon,
+					"-ljvm",
+					"-L/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/server",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = FirebaseProxy;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		6A3F7F8110AC146D00948A73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/include/darwin,
+					/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/include,
+				);
+				INFOPLIST_FILE = FirebaseProxy.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				LD_RUNPATH_SEARCH_PATHS = /Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Libraries;
+				LIBRARY_SEARCH_PATHS = (
+					/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Libraries,
+					"$(LOCAL_LIBRARY_DIR)/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Libraries",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Carbon,
+					"-ljvm",
+					"-L/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/jre/lib/server",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = FirebaseProxy;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4FADC23708B4156C00ABE55E /* Build configuration list for PBXProject "XCodePlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FADC23808B4156C00ABE55E /* Debug */,
+				4FADC23908B4156C00ABE55E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6A3F7F8210AC146D00948A73 /* Build configuration list for PBXNativeTarget "FirebaseProxy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6A3F7F8010AC146D00948A73 /* Debug */,
+				6A3F7F8110AC146D00948A73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}

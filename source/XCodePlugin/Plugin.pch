@@ -1,0 +1,75 @@
+
+extern "C" {
+    typedef void (*OnValueChanged)(void*, void* );
+    typedef void (*OnDebugLog)(const char*);
+    typedef void (*OnAuthSuccess)(long, const char*, const char*, long);
+    typedef void (*OnAuthCancel)(long, int , const char*, const char*);
+    typedef void (*OnError)(void*, int , const char*, const char*);
+
+    
+    extern OnValueChanged g_valueChanged;
+    extern OnValueChanged g_childAdded;
+    extern OnValueChanged g_childRemoved;
+    extern OnValueChanged g_childChanged;
+    extern OnValueChanged g_childMoved;
+
+    extern OnDebugLog g_debugLog;
+    extern OnAuthSuccess g_authSuccess;
+    extern OnAuthCancel g_authCancel;
+
+    extern OnError g_Error;
+
+	void DestroyJvm();
+	float GetJvmVersion();
+    void* _FirebaseNew (const char *path);
+    void _FirebaseSetString(void* firebase, const char *value);
+    void _FirebaseSetFloat(void* firebase, float value);
+    void _FirebaseSetJson(void* firebase, const char *value);
+    void _FirebaseSetPriority(void* firebase, const char *value);
+    void* _FirebaseChild(void* firebase, const char *path);
+    void* _FirebaseParent(void* firebase);
+    void* _FirebaseRoot(void* firebase);
+    void* _FirebasePush(void* firebase);
+    const char* _FirebaseGetKey(void* firebase);
+    void _FirebaseRelease(void* firebase);
+    
+    void _FirebaseSetCallbacks(OnValueChanged valueChanged,
+                               OnValueChanged childAdded,
+                               OnValueChanged childRemoved,
+                               OnValueChanged childChanged,
+                               OnValueChanged childMoved,
+                               OnDebugLog debugLog,
+                               OnAuthSuccess authSuccess,
+                               OnAuthCancel authFailure,
+                               OnError onError);
+    
+    void* _FirebaseObserveValueChange( void* firebase);
+    void* _FirebaseObserveChildEvents( void* firebase);
+    
+    void _FirebaseRemoveValueChange(void* stub);
+    void _FirebaseRemoveChildEvents(void* stub);
+    
+    void _FirebaseAuthWithCustomToken (void* firebase, const char* token, long callback);
+    void _FirebaseAuthAnonymously (void* firebase, long callback);
+    void _FirebaseAuthWithPassword (void* firebase, const char* email,
+                                    const char* password, long callback);
+    void _FirebaseAuthWithOAuthToken (void* firebase, const char* provider,
+                                      const char* token, long callback);
+    
+    const char* _FirebaseGetAuthToken(void* firebase);
+    const char* _FirebaseGetAuthUid(void* firebase);
+    long _FirebaseGetAuthExpiration(void* firebase);
+    void _FirebaseUnAuth(void* firebase);
+    
+    float _DataSnapshotGetFloatValue (void* datasnapshot);
+    const char* _DataSnapshotGetStringValue (void* datasnapshot);
+    const char* _DataSnapshotGetDictionary(void* datasnapshot);
+    void* _DataSnapshotGetChild (void* datasnapshot, const char* path);
+    void* _DataSnapshotHasChild (void* datasnapshot, const char* path);
+    void* _DataSnapshotExists (void* datasnapshot);
+    const char* _DataSnapshotGetKey (void* datasnapshot);
+    const char* _DataSnapshotGetPriority (void* datasnapshot);
+    void* _DataSnapshotGetRef (void* datasnapshot);
+    void _DataSnapshotRelease(void* datasnapshot);
+    
+}
