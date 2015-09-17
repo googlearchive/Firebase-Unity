@@ -34,7 +34,6 @@ public class QueryiOSImpl : IQuery {
 			lock(_sync) {
 				global_table.Remove (nativeReference);
 			}
-			_FirebaseRemoveObservers(nativeReference);
 		}
 	}
 
@@ -86,10 +85,7 @@ public class QueryiOSImpl : IQuery {
 
 	[DllImport("__Internal")]
 	private static extern void _FirebaseObserveChildMoved (IntPtr firebase, onValueChangedEventHandler onChanged, IntPtr referenceId);
-
-	[DllImport("__Internal")]
-	private static extern void _FirebaseRemoveObservers (IntPtr firebase);
-
+	
 	#region IQuery implementation
 	public event EventHandler<ChangedEventArgs> ValueUpdated {
 		add {

@@ -34,6 +34,7 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 	~FirebaseiOSImpl() {
 		IntPtr nativeReference = GetiOSObject ();
 		if (nativeReference != IntPtr.Zero) {
+			_FirebaseRemoveObservers(nativeReference);
 			_FirebaseRelease (nativeReference);
 		}
 	}
@@ -44,6 +45,9 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 	
 	[DllImport ("__Internal")]
 	private static extern void _FirebaseRelease(IntPtr firebase);
+
+	[DllImport("__Internal")]
+	private static extern void _FirebaseRemoveObservers (IntPtr firebase);
 
 	[DllImport ("__Internal")]
 	private static extern IntPtr _FirebaseChild (IntPtr firebase, string path);
