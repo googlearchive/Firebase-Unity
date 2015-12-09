@@ -7,7 +7,7 @@ This plugin supports:
  * Android
  * The Unity Player
 
-Currently, the unity player is only functional for Macs, Windows is not supported but message me if you want it (its a simple recompile)
+The unity player is now functional for both Mac and Windows.
 
 How to get started.
  1. Read about Firebase at www.firebase.com
@@ -29,10 +29,10 @@ Trouble Shooting.
   do this:<p/>
    classMember = new Firebase("mypath");  //holds a reference until the behavior is released<p/>
    classMember.ValueChanged += (...) => {...} ;<p/>
- * The plugin does not appear to be working at all for the player, but works for iOS and Android<p/>
+ * Mac: The plugin does not appear to be working at all for the player, but works for iOS and Android<p/>
   It could be that you have not installed the Java6 legacy runtime https://support.apple.com/kb/DL1572?locale=en_US
   It may also be that the plugin cannot locate Java on your machine.  To patch the Java location, open
   the Fireproxy.bundle, cd into Contents/MacOS and run this command:<p/>
-  install_name_tool -change "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/lib/server/libjvm.dylib" << newpath >> FirebaseProxy 
-
+  install_name_tool -change "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/lib/server/libjvm.dylib" << newpath >> FirebaseProxy <p/>
   where newpath is the location of libjvm.dylib under Java6.
+ * Windows: The plugin does not work in the player (or you get a nullref/crash) but works for iOS and Android.<p/>  This is most likely due to not having jvm.dll on your path.  You will need to install Java and ensure that you've updated your path to include jvm.dll.
