@@ -211,7 +211,11 @@ char* JniFirebase::GetKey()
         return NULL;
     }
     const char* utf_string = env->GetStringUTFChars(java_string, NULL);
+#if _WIN64
+    char* result = _strdup(utf_string);
+#else
     char* result = strdup(utf_string);
+#endif
     env->ReleaseStringUTFChars(java_string, utf_string);
     
     return result;
@@ -335,7 +339,7 @@ const char* JniFirebase::GetAuthUid() {
     return auth.GetAuthToken();
 }
 
-long JniFirebase::GetAuthExpiration() {
+uint64_t JniFirebase::GetAuthExpiration() {
     auto env = getEnv();
     if (!GetMethod(env, s_firebaseClass, "getAuth", "()Lcom.firebase.client.AuthData;",
                    &s_firebaseGetAuth)) {

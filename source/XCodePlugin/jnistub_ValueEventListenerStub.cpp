@@ -35,6 +35,6 @@ JNIEXPORT void JNICALL Java_jnistub_ValueEventListenerStub_onCancelled
     JniFirebaseError error = JniFirebaseError(firebaseError);
     JniEventProcessor::GetInstance()->EnqueueEvent(
                                                    new ErrorEvent((void*)cookie, error.GetCode(),
-                                                                  error.GetMessage(), error.GetDetails()));
+                                                                  error.GetErrorMessage(), error.GetDetails()));
     
 }

@@ -10,7 +10,10 @@
 #define XCodePlugin_JniHelper_h
 
 #include <stdio.h>
+#if _WIN64
+#else
 #include <dlfcn.h>
+#endif
 #include <mutex>
 #include <map>
 #include <sstream>
@@ -119,7 +122,7 @@ bool GetClass(JNIEnv* env, const char* className, jclass* pClass) {
     if (localRef) {
         *pClass = (jclass)env->NewGlobalRef(localRef);
     }
-    return (*pClass);
+    return (*pClass) != NULL;
 }
 
 inline
@@ -135,7 +138,7 @@ bool GetMethod(JNIEnv* env, jclass clazz, const char* methodName, const char* me
         return true;
     }
     *pMethod = env->GetMethodID(clazz, methodName, methodSig);
-    return (*pMethod);
+    return (*pMethod) != NULL;
 }
 
 const char* CallToString(JNIEnv* env, jobject localRef) ;

@@ -18,8 +18,8 @@ void OnValueChangedNoop(void*, void* pOrphanedSnapshot) {
 }
 void OnDebugLogNoop(const char*) {}
 
-void OnAuthSuccessNoop(long, const char*, const char*, long) {}
-void OnAuthCancelNoop(long, int , const char*, const char*) {}
+void OnAuthSuccessNoop(uint64_t, const char*, const char*, uint64_t) {}
+void OnAuthCancelNoop(uint64_t, int , const char*, const char*) {}
 void OnErrorNoop(void*, int , const char*, const char*) {}
 
 OnValueChanged g_valueChanged = &OnValueChangedNoop;
@@ -219,7 +219,7 @@ const char* _FirebaseGetAuthUid(void* firebase) {
     return jniFirebase->GetAuthUid();
 }
 
-long _FirebaseGetAuthExpiration(void* firebase) {
+uint64_t _FirebaseGetAuthExpiration(void* firebase) {
     if (!firebase) return 0;
     JniFirebase* jniFirebase = (JniFirebase*) firebase;
     return jniFirebase->GetAuthExpiration();
@@ -296,14 +296,5 @@ void _DataSnapshotRelease(void* datasnapshot) {
     JniDataSnapshot* jniDataSnapshot = (JniDataSnapshot*)datasnapshot;
     delete jniDataSnapshot;
 }
-
-
-
-
-
-
-
-
-
 
 

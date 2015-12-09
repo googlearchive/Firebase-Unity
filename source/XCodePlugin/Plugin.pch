@@ -1,9 +1,15 @@
 
+#if _WIN64
+    #define DllExport __declspec(dllexport)
+#else
+    #define DllExport
+#endif
+
 extern "C" {
     typedef void (*OnValueChanged)(void*, void* );
     typedef void (*OnDebugLog)(const char*);
-    typedef void (*OnAuthSuccess)(long, const char*, const char*, long);
-    typedef void (*OnAuthCancel)(long, int , const char*, const char*);
+    typedef void (*OnAuthSuccess)(uint64_t, const char*, const char*, uint64_t);
+    typedef void (*OnAuthCancel)(uint64_t, int , const char*, const char*);
     typedef void (*OnError)(void*, int , const char*, const char*);
 
     
@@ -19,21 +25,21 @@ extern "C" {
 
     extern OnError g_Error;
 
-	void DestroyJvm();
-	float GetJvmVersion();
-    void* _FirebaseNew (const char *path);
-    void _FirebaseSetString(void* firebase, const char *value);
-    void _FirebaseSetFloat(void* firebase, float value);
-    void _FirebaseSetJson(void* firebase, const char *value);
-    void _FirebaseSetPriority(void* firebase, const char *value);
-    void* _FirebaseChild(void* firebase, const char *path);
-    void* _FirebaseParent(void* firebase);
-    void* _FirebaseRoot(void* firebase);
-    void* _FirebasePush(void* firebase);
-    const char* _FirebaseGetKey(void* firebase);
-    void _FirebaseRelease(void* firebase);
+	DllExport void DestroyJvm();
+	DllExport float GetJvmVersion();
+    DllExport void* _FirebaseNew (const char *path);
+    DllExport void _FirebaseSetString(void* firebase, const char *value);
+    DllExport void _FirebaseSetFloat(void* firebase, float value);
+    DllExport void _FirebaseSetJson(void* firebase, const char *value);
+    DllExport void _FirebaseSetPriority(void* firebase, const char *value);
+    DllExport void* _FirebaseChild(void* firebase, const char *path);
+    DllExport void* _FirebaseParent(void* firebase);
+    DllExport void* _FirebaseRoot(void* firebase);
+    DllExport void* _FirebasePush(void* firebase);
+    DllExport const char* _FirebaseGetKey(void* firebase);
+    DllExport void _FirebaseRelease(void* firebase);
     
-    void _FirebaseSetCallbacks(OnValueChanged valueChanged,
+    DllExport void _FirebaseSetCallbacks(OnValueChanged valueChanged,
                                OnValueChanged childAdded,
                                OnValueChanged childRemoved,
                                OnValueChanged childChanged,
@@ -43,33 +49,32 @@ extern "C" {
                                OnAuthCancel authFailure,
                                OnError onError);
     
-    void* _FirebaseObserveValueChange( void* firebase);
-    void* _FirebaseObserveChildEvents( void* firebase);
+    DllExport void* _FirebaseObserveValueChange( void* firebase);
+    DllExport void* _FirebaseObserveChildEvents( void* firebase);
     
-    void _FirebaseRemoveValueChange(void* stub);
-    void _FirebaseRemoveChildEvents(void* stub);
+    DllExport void _FirebaseRemoveValueChange(void* stub);
+    DllExport void _FirebaseRemoveChildEvents(void* stub);
     
-    void _FirebaseAuthWithCustomToken (void* firebase, const char* token, long callback);
-    void _FirebaseAuthAnonymously (void* firebase, long callback);
-    void _FirebaseAuthWithPassword (void* firebase, const char* email,
+    DllExport void _FirebaseAuthWithCustomToken (void* firebase, const char* token, long callback);
+    DllExport void _FirebaseAuthAnonymously (void* firebase, long callback);
+    DllExport void _FirebaseAuthWithPassword (void* firebase, const char* email,
                                     const char* password, long callback);
-    void _FirebaseAuthWithOAuthToken (void* firebase, const char* provider,
+    DllExport void _FirebaseAuthWithOAuthToken (void* firebase, const char* provider,
                                       const char* token, long callback);
     
-    const char* _FirebaseGetAuthToken(void* firebase);
-    const char* _FirebaseGetAuthUid(void* firebase);
-    long _FirebaseGetAuthExpiration(void* firebase);
-    void _FirebaseUnAuth(void* firebase);
+    DllExport const char* _FirebaseGetAuthToken(void* firebase);
+    DllExport const char* _FirebaseGetAuthUid(void* firebase);
+    DllExport uint64_t _FirebaseGetAuthExpiration(void* firebase);
+    DllExport void _FirebaseUnAuth(void* firebase);
     
-    float _DataSnapshotGetFloatValue (void* datasnapshot);
-    const char* _DataSnapshotGetStringValue (void* datasnapshot);
-    const char* _DataSnapshotGetDictionary(void* datasnapshot);
-    void* _DataSnapshotGetChild (void* datasnapshot, const char* path);
-    void* _DataSnapshotHasChild (void* datasnapshot, const char* path);
-    void* _DataSnapshotExists (void* datasnapshot);
-    const char* _DataSnapshotGetKey (void* datasnapshot);
-    const char* _DataSnapshotGetPriority (void* datasnapshot);
-    void* _DataSnapshotGetRef (void* datasnapshot);
-    void _DataSnapshotRelease(void* datasnapshot);
-    
+    DllExport float _DataSnapshotGetFloatValue (void* datasnapshot);
+    DllExport const char* _DataSnapshotGetStringValue (void* datasnapshot);
+    DllExport const char* _DataSnapshotGetDictionary(void* datasnapshot);
+    DllExport void* _DataSnapshotGetChild (void* datasnapshot, const char* path);
+    DllExport void* _DataSnapshotHasChild (void* datasnapshot, const char* path);
+    DllExport void* _DataSnapshotExists (void* datasnapshot);
+    DllExport const char* _DataSnapshotGetKey (void* datasnapshot);
+    DllExport const char* _DataSnapshotGetPriority (void* datasnapshot);
+    DllExport void* _DataSnapshotGetRef (void* datasnapshot);
+    DllExport void _DataSnapshotRelease(void* datasnapshot);
 }

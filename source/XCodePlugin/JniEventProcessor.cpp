@@ -7,10 +7,14 @@
 //
 
 #include "JniEventProcessor.h"
+#if _WIN64
+#include "pthread.h"
+#else
 #include <pthread.h>
+#include <dispatch/dispatch.h>
+#endif
 #include <stdio.h>
 #include <stdlib.h>
-#include <dispatch/dispatch.h>
 #include "JniDataSnapshot.h"
 #include "jnistub_ChildEventListenerStub.h"
 #include "jnistub_ValueEventListenerStub.h"
@@ -24,9 +28,14 @@ JniEventProcessor::JniEventProcessor()
 {
     m_currentStart = 0;
     m_currentEnd = 0;
+#if _WIN64
+    m_cFull = CreateSemaphore(NULL, BUFFER_SIZE, BUFFER_SIZE, NULL);
+    m_cEmpty = CreateSemaphore(NULL, 0, BUFFER_SIZE, NULL);
+#else
     m_cFull = dispatch_semaphore_create(BUFFER_SIZE);
     m_cEmpty = dispatch_semaphore_create(0);
-    
+#endif
+
     m_isTerminated = true;
 }
 
@@ -42,7 +51,11 @@ void JniEventProcessor::TerminateThread() {
     lock<std::mutex> lock(m_threadHold);
     if (!m_isTerminated) {
         m_isTerminated = true;
+#if _WIN64
+        ReleaseSemaphore(m_cEmpty, 1, NULL); /* post to empty */
+#else
         dispatch_semaphore_signal(m_cEmpty); /* post to empty */
+#endif
     }
 }
 
@@ -65,17 +78,29 @@ void* JniEventProcessor::ThreadStart(void* thisPtr) {
 
 void JniEventProcessor::EnqueueEvent(JniEvent* item)
 {
+#if _WIN64
+    WaitForSingleObject(m_cFull, INFINITE); /* Wait if full */
+#else
     dispatch_semaphore_wait(m_cFull, DISPATCH_TIME_FOREVER); /* Wait if full */
+#endif
     lock<std::mutex> lock(m_mutex);
     enQ(item);
+#if _WIN64
+    ReleaseSemaphore(m_cEmpty, 1, NULL); /* post to empty */
+#else
     dispatch_semaphore_signal(m_cEmpty); /* post to empty */
+#endif
 }
 
 void JniEventProcessor::ProcessLoop()
 {
     while(true)
     {
+#if _WIN64
+        WaitForSingleObject(m_cEmpty, INFINITE); /* Wait if full */
+#else
         dispatch_semaphore_wait(m_cEmpty, DISPATCH_TIME_FOREVER); /* Wait if full */
+#endif
         lock<std::mutex> lock(m_mutex);
         if (m_isTerminated) {
             break;
@@ -94,7 +119,11 @@ void JniEventProcessor::ProcessLoop()
             //TODO log an error thru debuglog
             //we do our best not to let this thread die or else you dont get firebase events.
         }
+#if _WIN64
+        ReleaseSemaphore(m_cFull, 1, NULL); /* post to full */
+#else
         dispatch_semaphore_signal(m_cFull); /* post to full */
+#endif
     }
 }
 

@@ -18,7 +18,7 @@ public:
     ~JniFirebaseError();
     
     int GetCode();
-    const char* GetMessage();
+    const char* GetErrorMessage();
     const char* GetDetails();
     
 private:

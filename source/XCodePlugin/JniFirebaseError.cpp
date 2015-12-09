@@ -47,7 +47,7 @@ int JniFirebaseError::GetCode() {
     return code;
 }
 
-const char* JniFirebaseError::GetMessage() {
+const char* JniFirebaseError::GetErrorMessage() {
     auto env = getEnv();
     if (m_error == NULL) {
         return NULL;
@@ -61,7 +61,11 @@ const char* JniFirebaseError::GetMessage() {
         return NULL;
     }
     const char* utf_string = env->GetStringUTFChars(java_string, NULL);
+#if _WIN64
+    char* result = _strdup(utf_string);
+#else
     char* result = strdup(utf_string);
+#endif
     env->ReleaseStringUTFChars(java_string, utf_string);
     return result;
 }
@@ -80,7 +84,11 @@ const char* JniFirebaseError::GetDetails() {
         return NULL;
     }
     const char* utf_string = env->GetStringUTFChars(java_string, NULL);
+#if _WIN64
+    char* result = _strdup(utf_string);
+#else
     char* result = strdup(utf_string);
+#endif
     env->ReleaseStringUTFChars(java_string, utf_string);
     return result;
 }

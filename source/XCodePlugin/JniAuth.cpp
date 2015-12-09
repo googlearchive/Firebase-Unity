@@ -48,7 +48,11 @@ const char* JniAuth::GetAuthToken() {
         return NULL;
     }
     const char* utf_string = env->GetStringUTFChars(java_string, NULL);
+#if _WIN64
+    char* result = _strdup(utf_string);
+#else
     char* result = strdup(utf_string);
+#endif
     env->ReleaseStringUTFChars(java_string, utf_string);
     return result;
 }
@@ -67,12 +71,16 @@ const char* JniAuth::GetAuthUid() {
         return NULL;
     }
     const char* utf_string = env->GetStringUTFChars(java_string, NULL);
-    char* result = strdup(utf_string);
+    #if _WIN64
+        char* result = _strdup(utf_string);
+    #else
+        char* result = strdup(utf_string);
+    #endif
     env->ReleaseStringUTFChars(java_string, utf_string);
     return result;
 }
 
-long JniAuth::GetAuthExpiration() {
+uint64_t JniAuth::GetAuthExpiration() {
     auto env = getEnv();
     if (m_auth == NULL) {
         return NULL;

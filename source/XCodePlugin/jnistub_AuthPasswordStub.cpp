@@ -35,5 +35,5 @@ JNIEXPORT void JNICALL Java_jnistub_AuthPasswordStub_onAuthenticationError
         JniFirebaseError error = JniFirebaseError(firebaseError);
         JniEventProcessor::GetInstance()->EnqueueEvent(
                                                        new AuthFailureEvent(cookie, error.GetCode(),
-                                                                            error.GetMessage(), error.GetDetails()));
+                                                                            error.GetErrorMessage(), error.GetDetails()));
 }

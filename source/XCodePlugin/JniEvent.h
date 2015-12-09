@@ -59,21 +59,21 @@ private:
 
 class AuthSuccessEvent : public JniEvent {
 public:
-    AuthSuccessEvent(long cookie, const char* token, const char*uid, long expiration);
+    AuthSuccessEvent(uint64_t cookie, const char* token, const char*uid, uint64_t expiration);
     void Process();
 private:
-    long m_cookie;
+	uint64_t m_cookie;
     const char* m_token;
     const char* m_uid;
-    long m_expiration;
+	uint64_t m_expiration;
 };
 
 class AuthFailureEvent : public JniEvent {
 public:
-    AuthFailureEvent(long cookie, int code, const char* message, const char* detail);
+    AuthFailureEvent(uint64_t cookie, int code, const char* message, const char* detail);
     void Process();
 private:
-    long m_cookie;
+	uint64_t m_cookie;
     int m_code;
     const char* m_message;
     const char* m_detail;

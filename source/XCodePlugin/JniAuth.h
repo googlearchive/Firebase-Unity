@@ -19,7 +19,7 @@ public:
     
     const char* GetAuthToken();
     const char* GetAuthUid();
-    long GetAuthExpiration();
+	uint64_t GetAuthExpiration();
     
 private:
     jobject m_auth;

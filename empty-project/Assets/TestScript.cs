@@ -20,6 +20,8 @@ public class TestScript : MonoBehaviour {
 		firebase.ChildRemoved += (object sender, ChangedEventArgs e) => {
 			Debug.Log ("Child removed!");
 		};
+
+		//firebase.SetValue ("working?");
 	}
 	
 	// Update is called once per frame

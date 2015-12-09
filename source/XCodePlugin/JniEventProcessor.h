@@ -11,10 +11,15 @@
 
 #include <stdio.h>
 #include "JniEventProcessor.h"
+#if _WIN64
+#include "pthread.h"
+#include <Windows.h>
+#else
 #include <pthread.h>
+#include <dispatch/dispatch.h>
+#endif
 #include <stdlib.h>
 #include <mutex>
-#include <dispatch/dispatch.h>
 #include "JniDataSnapshot.h"
 #include "jnistub_ChildEventListenerStub.h"
 #include "jnistub_ValueEventListenerStub.h"
@@ -46,8 +51,13 @@ private:
     int m_currentEnd;
     bool m_isTerminated;
     
+#if _WIN64
+    HANDLE m_cEmpty;
+    HANDLE m_cFull;
+#else
     dispatch_semaphore_t m_cEmpty;
     dispatch_semaphore_t m_cFull;
+#endif
     std::mutex m_mutex;
     std::mutex m_threadHold;
 

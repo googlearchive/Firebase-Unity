@@ -17,6 +17,9 @@
 #include "jnistub_AuthCustomTokenStub.h"
 #include "jnistub_AuthOAuthStub.h"
 #include "jnistub_AuthPasswordStub.h"
+#if _WIN64
+#include <Windows.h>
+#endif
 
 std::mutex g_lock;
 JavaVM *g_jvm = NULL;
@@ -90,6 +93,42 @@ JNIEnv* getEnv() {
         if (g_jvm == NULL) {
             JavaVMInitArgs vm_args;
             JavaVMOption* options = new JavaVMOption[1];
+#if _WIN64
+            //classpath WIN64
+            char path[MAX_PATH];
+            HMODULE hm = NULL;
+
+            if (!GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS |
+                GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
+                (LPCSTR)&_FirebaseSetString,
+                &hm))
+            {
+                int ret = GetLastError();
+                fprintf(stderr, "GetModuleHandle returned %d\n", ret);
+                return NULL;
+            }
+            GetModuleFileNameA(hm, path, sizeof(path));
+
+            char* lastFolder = strrchr(path, '\\');
+            int pathsize = (int)(lastFolder - path + 1);
+            if (pathsize <= 0) {
+               return NULL;
+            }
+
+            int bufSize = (FILENAME_MAX + pathsize + 1) * NUM_ENTRIES + 18;
+            char* classpath = new char[bufSize];
+            *classpath = '\0';
+            strcat_s(classpath, bufSize, "-Djava.class.path=");
+            for(int i = 0; i < NUM_ENTRIES; i++) {
+               strncat_s(classpath, bufSize, path, pathsize);
+               strcat_s(classpath, bufSize, classpathentries[i]);
+               if (i != NUM_ENTRIES - 1) {
+                strcat_s(classpath, bufSize, ";");
+               }
+            }
+
+            options[0].optionString = classpath;
+#else
             Dl_info info;
             if (!dladdr((void*)_FirebaseSetString, &info)) {
                 return NULL;
@@ -99,7 +138,7 @@ JNIEnv* getEnv() {
             if (pathsize <= 0) {
                 return NULL;
             }
-            
+
             char* classpath = new char[(FILENAME_MAX + pathsize + 1) * NUM_ENTRIES + 18];
             *classpath = '\0';
             classpath = strcat(classpath, "-Djava.class.path=");
@@ -110,8 +149,10 @@ JNIEnv* getEnv() {
                     classpath = strcat(classpath, ":");
                 }
             }
-            
+
             options[0].optionString = classpath;
+#endif
+
             vm_args.version = JNI_VERSION_1_6;
             vm_args.nOptions = 1;
             vm_args.options = options;
@@ -205,7 +246,11 @@ const char* CallToString(JNIEnv* env, jobject localRef) {
         return NULL;
     }
     const char* utf_string = env->GetStringUTFChars(java_string, NULL);
+#if _WIN64
+    char* result = _strdup(utf_string);
+#else
     char* result = strdup(utf_string);
+#endif
     env->ReleaseStringUTFChars(java_string, utf_string);
 
     return result;

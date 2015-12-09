@@ -37,7 +37,7 @@ public:
     
     const char* GetAuthToken();
     const char* GetAuthUid();
-    long GetAuthExpiration();
+	uint64_t GetAuthExpiration();
     
     void UnAuth();
     

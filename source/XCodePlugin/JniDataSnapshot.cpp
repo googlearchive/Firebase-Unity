@@ -181,7 +181,11 @@ const char* JniDataSnapshot::GetKey () {
         return NULL;
     }
     const char* utf_string = env->GetStringUTFChars(java_string, NULL);
-    char* result = strdup(utf_string);
+    #if _WIN64
+        char* result = _strdup(utf_string);
+    #else
+        char* result = strdup(utf_string);
+    #endif
     env->ReleaseStringUTFChars(java_string, utf_string);
     
     return result;
@@ -201,7 +205,11 @@ const char* JniDataSnapshot::GetPriority () {
         return NULL;
     }
     const char* utf_string = env->GetStringUTFChars(java_string, NULL);
-    char* result = strdup(utf_string);
+    #if _WIN64
+        char* result = _strdup(utf_string);
+    #else
+        char* result = strdup(utf_string);
+    #endif
     env->ReleaseStringUTFChars(java_string, utf_string);
     
     return result;

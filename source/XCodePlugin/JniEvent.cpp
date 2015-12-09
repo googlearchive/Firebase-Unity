@@ -47,7 +47,7 @@ void ChildMovedEvent::Process() {
     g_childMoved(m_snapshot->GetCookie(), m_snapshot);
 }
 
-AuthSuccessEvent::AuthSuccessEvent(long cookie, const char* token, const char*uid, long expiration) {
+AuthSuccessEvent::AuthSuccessEvent(uint64_t cookie, const char* token, const char*uid, uint64_t expiration) {
     m_cookie = cookie;
     m_token = token;
     m_uid = uid;
@@ -57,7 +57,7 @@ void AuthSuccessEvent::Process() {
     g_authSuccess(m_cookie, m_token, m_uid, m_expiration);
 }
 
-AuthFailureEvent::AuthFailureEvent(long cookie, int code, const char* message, const char* detail) {
+AuthFailureEvent::AuthFailureEvent(uint64_t cookie, int code, const char* message, const char* detail) {
     m_cookie = cookie;
     m_code = code;
     m_message = message;
