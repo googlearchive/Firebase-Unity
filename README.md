@@ -29,6 +29,7 @@ Trouble Shooting.
   do this:<p/>
    classMember = new Firebase("mypath");  //holds a reference until the behavior is released<p/>
    classMember.ValueChanged += (...) => {...} ;<p/>
+ * iOS: XCode fails to link.  Please follow instructions located at: https://www.firebase.com/docs/ios/alternate-setup.html  You will need to do this again if you do a full build/replace from Unity, but an incremental build will keep these settins.<p/>
  * Mac: The plugin does not appear to be working at all for the player, but works for iOS and Android<p/>
   It could be that you have not installed the Java6 legacy runtime https://support.apple.com/kb/DL1572?locale=en_US
   It may also be that the plugin cannot locate Java on your machine.  To patch the Java location, open
