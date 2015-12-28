@@ -29,11 +29,11 @@ Trouble Shooting.
   do this:<p/>
    classMember = new Firebase("mypath");  //holds a reference until the behavior is released<p/>
    classMember.ValueChanged += (...) => {...} ;<p/>
- * iOS: XCode fails to link.  Please follow instructions located at: https://www.firebase.com/docs/ios/alternate-setup.html  You will need to do this again if you do a full build/replace from Unity, but an incremental build will keep these settins.<p/>
+ * iOS: XCode fails to link.  Please follow instructions located at: https://www.firebase.com/docs/ios/alternate-setup.html  You will need to do this again if you do a full build/replace from Unity, but an incremental build will keep these settings.<p/>
  * Mac: The plugin does not appear to be working at all for the player, but works for iOS and Android<p/>
   It could be that you have not installed the Java6 legacy runtime https://support.apple.com/kb/DL1572?locale=en_US
   It may also be that the plugin cannot locate Java on your machine.  To patch the Java location, open
   the Fireproxy.bundle, cd into Contents/MacOS and run this command:<p/>
   install_name_tool -change "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/lib/server/libjvm.dylib" << newpath >> FirebaseProxy <p/>
   where newpath is the location of libjvm.dylib under Java6.
- * Windows: The plugin does not work in the player (or you get a nullref/crash) but works for iOS and Android.<p/>  This is most likely due to not having jvm.dll on your path.  You will need to install Java and ensure that you've updated your path to include jvm.dll.
+ * Windows: The plugin does not work in the player (or you get a nullref/crash) but works for iOS and Android.<p/>  Make sure you have installed Java and that you've updated your PATH environment variable to include jvm.dll.  Note that the error you see will be something to the effect of "could not locate Firebaseproxy.dll".  This happens because FirebaseProxy.dll depends on jvm.dll which could not be located.
