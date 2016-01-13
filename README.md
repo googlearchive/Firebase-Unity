@@ -36,4 +36,4 @@ Trouble Shooting.
   the Fireproxy.bundle, cd into Contents/MacOS and run this command:<p/>
   install_name_tool -change "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/lib/server/libjvm.dylib" << newpath >> FirebaseProxy <p/>
   where newpath is the location of libjvm.dylib under Java6.
- * Windows: The plugin does not work in the player (or you get a nullref/crash) but works for iOS and Android.<p/>  Make sure you have installed Java and that you've updated your PATH environment variable to include jvm.dll.  Note that the error you see will be something to the effect of "could not locate Firebaseproxy.dll".  This happens because FirebaseProxy.dll depends on jvm.dll which could not be located.
+ * Windows: The plugin does not work in the player (or you get a nullref/crash) but works for iOS and Android.<p/>  Make sure you have installed the *64bit* version of Java and that you've updated your PATH environment variable to include jvm.dll.  Note that the error you see will be something to the effect of "could not locate Firebaseproxy.dll".  This happens because FirebaseProxy.dll depends on jvm.dll which could not be located.
