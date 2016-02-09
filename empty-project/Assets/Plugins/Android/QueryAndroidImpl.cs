@@ -65,7 +65,7 @@ internal class QueryAndroidImpl : IQuery {
 			
 			if (valueUpdatedEvent == null) {
 				
-				GetJavaObject().Call<AndroidJavaObject>("removeEventListener", valueupdateListener);
+				GetJavaObject().Call("removeEventListener", valueupdateListener);
 				valueupdateListener = null;
 			}
 			
@@ -87,7 +87,7 @@ internal class QueryAndroidImpl : IQuery {
 			
 			if (childAddedEvent == null && childRemovedEvent == null
 			    && childChangedEvent == null && childMovedEvent == null) {
-				GetJavaObject().Call<AndroidJavaObject>("removeEventListener", childListener);
+				GetJavaObject().Call("removeEventListener", childListener);
 				childListener = null;
 			}
 		}
@@ -108,7 +108,7 @@ internal class QueryAndroidImpl : IQuery {
 			
 			if (childAddedEvent == null && childRemovedEvent == null
 			    && childChangedEvent == null && childMovedEvent == null) {
-				GetJavaObject().Call<AndroidJavaObject>("removeEventListener", childListener);
+				GetJavaObject().Call("removeEventListener", childListener);
 				childListener = null;
 			}
 		}
@@ -129,7 +129,7 @@ internal class QueryAndroidImpl : IQuery {
 			
 			if (childAddedEvent == null && childRemovedEvent == null
 			    && childChangedEvent == null && childMovedEvent == null) {
-				GetJavaObject().Call<AndroidJavaObject>("removeEventListener", childListener);
+				GetJavaObject().Call("removeEventListener", childListener);
 				childListener = null;
 			}
 		}
@@ -150,7 +150,7 @@ internal class QueryAndroidImpl : IQuery {
 			
 			if (childAddedEvent == null && childRemovedEvent == null
 			    && childChangedEvent == null && childMovedEvent == null) {
-				GetJavaObject().Call<AndroidJavaObject>("removeEventListener", childListener);
+				GetJavaObject().Call("removeEventListener", childListener);
 				childListener = null;
 			}
 		}
@@ -252,12 +252,21 @@ internal class QueryAndroidImpl : IQuery {
 			parent.OnChildChanged (new DataSnapshotAndroidImpl (snapshot));
 		}
 
+		void onChildChanged(AndroidJavaObject snapshot, AndroidJavaObject previousChildName) {
+			parent.OnChildChanged (new DataSnapshotAndroidImpl (snapshot));
+		}
+
 		void onChildMoved(AndroidJavaObject snapshot, string previousChildName) {
 			parent.OnChildMoved (new DataSnapshotAndroidImpl (snapshot));
 		}
 
 		void onChildRemoved(AndroidJavaObject snapshot) {
 			parent.OnChildRemoved (new DataSnapshotAndroidImpl (snapshot));
+		}
+
+		bool equals (AndroidJavaObject other)
+		{
+			return other.Equals (this);
 		}
 	}
 }
