@@ -27,8 +27,8 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 	static OnAuthSuccessHandler authSuccessHandler = new OnAuthSuccessHandler(onAuthSuccess);
 	static OnAuthCancelHandler authFailureHandler = new OnAuthCancelHandler(onAuthCancel);
 
-	public delegate void OnAuthSuccessHandler(long reference, String token, String uid, long expiration);
-	public delegate void OnAuthCancelHandler(long reference, int code, String message, String details);
+	public delegate void OnAuthSuccessHandler(int reference, String token, String uid, int expiration);
+	public delegate void OnAuthCancelHandler(int reference, int code, String message, String details);
 	
 	public FirebaseiOSImpl (IntPtr nativeReference)
 		:base(nativeReference)
@@ -94,23 +94,23 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 	[DllImport ("__Internal")]
 	private static extern void _FirebaseAuthWithCustomToken (IntPtr firebase, string token,
 	                                   OnAuthSuccessHandler success, OnAuthCancelHandler cancel,
-	                                                         long callback);
+	                                                         int callback);
 	[DllImport ("__Internal")]
 	private static extern void _FirebaseAuthAnonymously (IntPtr firebase,
 	                               OnAuthSuccessHandler success, OnAuthCancelHandler cancel,
-	                                                     long callback);
+	                                                     int callback);
 	
 	[DllImport ("__Internal")]
 	private static extern void _FirebaseAuthWithPassword (IntPtr firebase, string email,
 	                                string password,
 	                                OnAuthSuccessHandler success, OnAuthCancelHandler cancel,
-	                                                      long callback);
+	                                                      int callback);
 	
 	[DllImport ("__Internal")]
 	private static extern void _FirebaseAuthWithOAuthToken (IntPtr firebase, string provider,
 	                                  string token,
 	                                  OnAuthSuccessHandler success, OnAuthCancelHandler cancel,
-	                                  long callback);
+	                                  int callback);
 
 	[DllImport ("__Internal")]
 	private static extern string _FirebaseGetAuthToken(IntPtr firebase);
@@ -119,7 +119,7 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 	private static extern string _FirebaseGetAuthUid(IntPtr firebase);
 
 	[DllImport ("__Internal")]
-	private static extern long _FirebaseGetAuthExpiration (IntPtr firebase);
+	private static extern int _FirebaseGetAuthExpiration (IntPtr firebase);
 	
 	[DllImport ("__Internal")]
 	private static extern void _FirebaseUnAuth( IntPtr firebase);
@@ -181,7 +181,7 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 	public void AuthWithCustomToken (string token, Action<AuthData> onSuccess, Action<FirebaseError> onError)
 	{
 		lock (auth_sync) {
-			long newnumber = activeCallEntry != null ? (activeCallEntry.Instance + 1) % long.MaxValue - 1 : 0;
+			int newnumber = activeCallEntry != null ? (activeCallEntry.Instance + 1) % int.MaxValue - 1 : 0;
 			activeCallEntry = new AuthCallInstanceEntry() { Instance = newnumber, OnSuccess = onSuccess, OnError = onError};
 			_FirebaseAuthWithCustomToken(GetiOSObject(), token, authSuccessHandler, authFailureHandler, activeCallEntry.Instance);
 		}
@@ -190,7 +190,7 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 	public void AuthAnonymously (Action<AuthData> onSuccess, Action<FirebaseError> onError)
 	{
 		lock (auth_sync) {
-			long newnumber = activeCallEntry != null ? (activeCallEntry.Instance + 1) % long.MaxValue - 1 : 0;
+			int newnumber = activeCallEntry != null ? (activeCallEntry.Instance + 1) % int.MaxValue - 1 : 0;
 			activeCallEntry = new AuthCallInstanceEntry() { Instance = newnumber, OnSuccess = onSuccess, OnError = onError};
 			_FirebaseAuthAnonymously(GetiOSObject(), authSuccessHandler, authFailureHandler, activeCallEntry.Instance);
 		}
@@ -199,7 +199,7 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 	public void AuthWithPassword (string email, string password, Action<AuthData> onSuccess, Action<FirebaseError> onError)
 	{
 		lock (auth_sync) {
-			long newnumber = activeCallEntry != null ? (activeCallEntry.Instance + 1) % long.MaxValue - 1 : 0;
+			int newnumber = activeCallEntry != null ? (activeCallEntry.Instance + 1) % int.MaxValue - 1 : 0;
 			activeCallEntry = new AuthCallInstanceEntry() { Instance = newnumber, OnSuccess = onSuccess, OnError = onError};
 			_FirebaseAuthWithPassword(GetiOSObject(), email, password, authSuccessHandler, authFailureHandler, activeCallEntry.Instance);
 		}
@@ -208,7 +208,7 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 	public void AuthWithOAuthToken (string provider, string token, Action<AuthData> onSuccess, Action<FirebaseError> onError)
 	{
 		lock (auth_sync) {
-			long newnumber = activeCallEntry != null ? (activeCallEntry.Instance + 1) % long.MaxValue - 1 : 0;
+			int newnumber = activeCallEntry != null ? (activeCallEntry.Instance + 1) % int.MaxValue - 1 : 0;
 			activeCallEntry = new AuthCallInstanceEntry() { Instance = newnumber, OnSuccess = onSuccess, OnError = onError};
 			_FirebaseAuthWithOAuthToken(GetiOSObject(), provider, token, authSuccessHandler, authFailureHandler, activeCallEntry.Instance);
 		}
@@ -229,7 +229,7 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 	#endregion
 
 	[MonoPInvokeCallbackAttribute(typeof(OnAuthSuccessHandler))]
-	static void onAuthSuccess(long reference, String token, String uid, long expiration) {
+	static void onAuthSuccess(int reference, String token, String uid, int expiration) {
 		Action<AuthData> callback = null;
 		lock (auth_sync) {
 			if (activeCallEntry != null && activeCallEntry.Instance == reference) {
@@ -243,7 +243,7 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 	}
 	
 	[MonoPInvokeCallbackAttribute(typeof(OnAuthCancelHandler))]
-	static void onAuthCancel(long reference, int code, String message, String details) {
+	static void onAuthCancel(int reference, int code, String message, String details) {
 		Action<FirebaseError> callback = null;
 		lock (auth_sync) {
 			if (activeCallEntry != null && activeCallEntry.Instance == reference) {
@@ -271,7 +271,7 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 	}
 
 	class AuthCallInstanceEntry {
-		public long Instance { get; set; }
+		public int Instance { get; set; }
 		public Action<AuthData> OnSuccess { get; set; }
 		public Action<FirebaseError> OnError { get; set;}
 	}
