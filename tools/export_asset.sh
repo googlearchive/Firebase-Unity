@@ -1,4 +1,4 @@
-#!/usr/bin/env
+#!/bin/bash
 
 # This script exports the current plugin as a standalone asset that is easy to import in your project
 # By simply merging it with your "Plugins" folder
