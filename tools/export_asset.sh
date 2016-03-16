@@ -17,3 +17,4 @@ rm ../export/Plugins/Android/AndroidManifest.xml
 
 # Remove all meta files (You don't want your plugin overwriting generated meta files for the Android/iOS/Edit etc plugins)
 rm -rf *.meta
+
