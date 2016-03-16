@@ -20,7 +20,7 @@ using System;
 #if UNITY_ANDROID
 internal class QueryAndroidImpl : IQuery {
 	AndroidJavaObject queryRef;
-	EventHandler<ChangedEventArgs> valueUpdatedEvent, childAddedEvent, 
+	EventHandler<FirebaseChangedEventArgs> valueUpdatedEvent, childAddedEvent, 
 									childRemovedEvent, childChangedEvent, childMovedEvent;
 	ValueEventListener valueupdateListener;
 	ChildEventListener childListener;
@@ -50,7 +50,7 @@ internal class QueryAndroidImpl : IQuery {
 		return objectclass;
 	}
 
-	public event EventHandler<ChangedEventArgs> ValueUpdated {
+	public event EventHandler<FirebaseChangedEventArgs> ValueUpdated {
 		add {
 			valueUpdatedEvent += value;
 			
@@ -72,7 +72,7 @@ internal class QueryAndroidImpl : IQuery {
 		}
 	}
 
-	public event EventHandler<ChangedEventArgs> ChildAdded {
+	public event EventHandler<FirebaseChangedEventArgs> ChildAdded {
 		add {
 			childAddedEvent += value;
 			
@@ -93,7 +93,7 @@ internal class QueryAndroidImpl : IQuery {
 		}
 	}
 
-	public event EventHandler<ChangedEventArgs> ChildRemoved {
+	public event EventHandler<FirebaseChangedEventArgs> ChildRemoved {
 		add {
 			childRemovedEvent += value;
 			
@@ -114,7 +114,7 @@ internal class QueryAndroidImpl : IQuery {
 		}
 	}
 
-	public event EventHandler<ChangedEventArgs> ChildChanged {
+	public event EventHandler<FirebaseChangedEventArgs> ChildChanged {
 		add {
 			childChangedEvent += value;
 			
@@ -135,7 +135,7 @@ internal class QueryAndroidImpl : IQuery {
 		}
 	}
 
-	public event EventHandler<ChangedEventArgs> ChildMoved {
+	public event EventHandler<FirebaseChangedEventArgs> ChildMoved {
 		add {
 			childMovedEvent += value;
 			
@@ -156,45 +156,45 @@ internal class QueryAndroidImpl : IQuery {
 		}
 	}
 
-	public event EventHandler<ErrorEventArgs> Error;
+	public event EventHandler<FirebaseErrorEventArgs> Error;
 	
 	void OnValueUpdated(DataSnapshotAndroidImpl snapshot) {
-		EventHandler<ChangedEventArgs> handler = valueUpdatedEvent;
+		EventHandler<FirebaseChangedEventArgs> handler = valueUpdatedEvent;
 		if (handler != null)
 		{
-			handler(this, new ChangedEventArgs() { DataSnapshot = snapshot });
+			handler(this, new FirebaseChangedEventArgs() { DataSnapshot = snapshot });
 		}
 	}
 
 	void OnChildAdded(DataSnapshotAndroidImpl snapshot) {
-		EventHandler<ChangedEventArgs> handler = childAddedEvent;
+		EventHandler<FirebaseChangedEventArgs> handler = childAddedEvent;
 		if (handler != null)
 		{
-			handler(this, new ChangedEventArgs() { DataSnapshot = snapshot });
+			handler(this, new FirebaseChangedEventArgs() { DataSnapshot = snapshot });
 		}
 	}
 
 	void OnChildRemoved(DataSnapshotAndroidImpl snapshot) {
-		EventHandler<ChangedEventArgs> handler = childRemovedEvent;
+		EventHandler<FirebaseChangedEventArgs> handler = childRemovedEvent;
 		if (handler != null)
 		{
-			handler(this, new ChangedEventArgs() { DataSnapshot = snapshot });
+			handler(this, new FirebaseChangedEventArgs() { DataSnapshot = snapshot });
 		}
 	}
 
 	void OnChildChanged(DataSnapshotAndroidImpl snapshot) {
-		EventHandler<ChangedEventArgs> handler = childChangedEvent;
+		EventHandler<FirebaseChangedEventArgs> handler = childChangedEvent;
 		if (handler != null)
 		{
-			handler(this, new ChangedEventArgs() { DataSnapshot = snapshot });
+			handler(this, new FirebaseChangedEventArgs() { DataSnapshot = snapshot });
 		}
 	}
 
 	void OnChildMoved(DataSnapshotAndroidImpl snapshot) {
-		EventHandler<ChangedEventArgs> handler = childMovedEvent;
+		EventHandler<FirebaseChangedEventArgs> handler = childMovedEvent;
 		if (handler != null)
 		{
-			handler(this, new ChangedEventArgs() { DataSnapshot = snapshot });
+			handler(this, new FirebaseChangedEventArgs() { DataSnapshot = snapshot });
 		}
 	}
 	
@@ -213,9 +213,9 @@ internal class QueryAndroidImpl : IQuery {
 		
 		void onCancelled(AndroidJavaObject error) {
 			FirebaseErrorAndroidImpl errorImpl = new FirebaseErrorAndroidImpl (error);
-			EventHandler<ErrorEventArgs> handler = parent.Error;
+			EventHandler<FirebaseErrorEventArgs> handler = parent.Error;
 			if (handler != null) {
-				handler(this, new ErrorEventArgs() { 
+				handler(this, new FirebaseErrorEventArgs() { 
 					Error = new FirebaseError(errorImpl.Code, errorImpl.Message,  errorImpl.Details)
 				});
 			}		
@@ -233,9 +233,9 @@ internal class QueryAndroidImpl : IQuery {
 
 		void onCancelled(AndroidJavaObject error) {
 			FirebaseErrorAndroidImpl errorImpl = new FirebaseErrorAndroidImpl (error);
-			EventHandler<ErrorEventArgs> handler = parent.Error;
+			EventHandler<FirebaseErrorEventArgs> handler = parent.Error;
 			if (handler != null) {
-				handler(this, new ErrorEventArgs() { Error = new FirebaseError(
+				handler(this, new FirebaseErrorEventArgs() { Error = new FirebaseError(
 					errorImpl.Code, errorImpl.Message, errorImpl.Details)});
 			}
 		}
