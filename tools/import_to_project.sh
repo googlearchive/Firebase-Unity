@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#This script merges changes from your own unity projects back into your firebase soure directory
+# This script merges changes from your own unity projects back into your firebase soure directory
+# Run it by running ./import_to_project.sh <your_unity_plugin_folder>
 
 # Store the root
 ROOT=$(cd $(dirname $0); pwd)
@@ -12,8 +13,8 @@ echo $SRCDIR;
 
 INDIR=$1
 if [ -z "$INDIR" ]; then
-  echo "Usage: $0 <plugin-directory>"
-  echo "    Imports your Firebase Unity plugin changes from your project to this one <plugin-directory>."
+  echo "Usage: $0 <your_unity_plugin_folder>"
+  echo "    Imports your Firebase Unity plugin changes from your project to this one <your_unity_plugin_folder>."
   echo "Note: Requires git!"
   exit 1
 fi
@@ -43,4 +44,6 @@ while read p; do
   #Return to root
   cd $ROOT
 done <file_watchlist.tmp
+
+rm $ROOT/file_watchlist.tmp
 
