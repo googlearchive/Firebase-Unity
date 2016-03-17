@@ -34,15 +34,10 @@ cd $ROOT
 #Iterate over the file_watchlist and find each file in the specified directory
 while read p; do
 
-  #Enter into the remote plugin directory
-  cd $1
-
   #Merge the file into the firebase project
   git merge-file -p $FB_EMPTY_PROJECT/$p $FB_EMPTY_PROJECT/$p $1/$p > $FB_EMPTY_PROJECT/$p
-    echo 'Merged ' $p from
+    echo 'Merged ' $p 
 
-  #Return to root
-  cd $ROOT
 done <file_watchlist.tmp
 
 rm $ROOT/file_watchlist.tmp
