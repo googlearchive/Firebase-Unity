@@ -46,7 +46,7 @@ You will find the API is very similar to the Java/iOS versions except that:
       foo.ChildAdded -= FooChildAdded;
     }
 
-    void FooChildAdded (object sender, ChangedEventArgs e) {
+    void FooChildAdded (object sender, FirebaseChangedEventArgs e) {
       Debug.Log("FooChildAdded: " + e.DataSnapshot.Key);
     }
     ```

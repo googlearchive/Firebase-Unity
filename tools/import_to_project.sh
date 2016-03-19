@@ -14,12 +14,11 @@ echo $SRCDIR;
 INDIR=$1
 if [ -z "$INDIR" ]; then
   echo "Usage: $0 <your_unity_plugin_folder>"
-  echo "    Imports your Firebase Unity plugin changes from your project to this one <your_unity_plugin_folder>."
-  echo "Note: Requires git!"
+  echo "    Imports your Firebase Unity changes from your own Unity project to this one using git merge-file."
   exit 1
 fi
 
-# Delete the current watchlist
+# Delete the current watchlist if it exists
 rm $ROOT/file_watchlist.tmp
 
 
