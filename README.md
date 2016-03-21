@@ -13,10 +13,7 @@ Welcome to Firebase (www.firebase.com) on Unity3d plugin, which supports:
 
 ## How to get started (If you already have an existing project that requires Firebase)
 1. Read about Firebase at www.firebase.com
-2. Clone this repository, or simply click the "Download ZIP" button
-3. Drag and drop the contents of the export/Plugins directory in your own Plugins folder
-4. Look at the "TestScript.cs" object in the main repository to see how to get started
-5. Add your script to an object in Unity and start coding against Firebase!
+2. Import the package "firebase.unitypackage"
 
 ## API Differences
 You will find the API is very similar to the Java/iOS versions except that:
