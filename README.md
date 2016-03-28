@@ -103,35 +103,35 @@ You will find the API is very similar to the Java/iOS versions except that:
 
  * Threading: Unity does not allow game object modifications from any thread other than the Main thread. Firebase operates on a separate thread for performance reasons, and so you can not directly edit game objects from your firebase event responses. You can solve this by adding a Queue with actions to be fulfilled on the main thread. Create a new object inside Unity, add it to the game object you just created, and insert this code:
 
- ```C#
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System;
+  ```C#
+  using UnityEngine;
+  using System.Collections;
+  using System.Collections.Generic;
+  using System;
 
-public class ExampleMainThreadQueue : MonoBehaviour {
+  public class ExampleMainThreadQueue : MonoBehaviour {
 
-  public readonly static Queue<Action> ExecuteOnMainThread = new Queue<Action>();
+    public readonly static Queue<Action> ExecuteOnMainThread = new Queue<Action>();
 
-  public void Update()
-  {
-    // dispatch stuff on main thread
-    while (ExecuteOnMainThread.Count > 0)
+    public void Update()
     {
-      ExecuteOnMainThread.Dequeue().Invoke();
+      // dispatch stuff on main thread
+      while (ExecuteOnMainThread.Count > 0)
+      {
+        ExecuteOnMainThread.Dequeue().Invoke();
+      }
     }
   }
-}
 
-```
+  ```
 
-You can now execute function on the main thread using coroutines. 
+  You can now execute function on the main thread using coroutines. 
 
-```C#
-ExampleMainThreadQueue.ExecuteOnMainThread.Enqueue(() => {  
-    StartCoroutine(somecoroutine);
-} );
-```
+  ```C#
+  ExampleMainThreadQueue.ExecuteOnMainThread.Enqueue(() => {  
+      StartCoroutine(somecoroutine);
+  } );
+  ```
 
 
  * iOS: XCode fails to link.  Please follow instructions located at: https://www.firebase.com/docs/ios/alternate-setup.html  You will need to do this again if you do a full build/replace from Unity, but an incremental build will keep these settings.
