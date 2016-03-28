@@ -29,14 +29,15 @@ public class TestScript : MonoBehaviour {
 		});
 
 		firebase.ChildAdded += (object sender, FirebaseChangedEventArgs e) => {
-			Debug.Log ("Child added!");
+			Debug.Log ("Child added with value: " + e.DataSnapshot.StringValue);
 		};
 
 		firebase.ChildRemoved += (object sender, FirebaseChangedEventArgs e) => {
 			Debug.Log ("Child removed!");
 		};
 
-		//firebase.SetValue ("working?");
+		firebase.SetValue ("SetValue working?");
+		firebase.SetJson("{\"example_child\":{\"child_working\" : true}}");
 	}
 	
 	// Update is called once per frame
