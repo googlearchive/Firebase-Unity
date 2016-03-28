@@ -6,10 +6,14 @@ Welcome to Firebase (www.firebase.com) on Unity3d plugin, which supports:
  * Android
  * The Unity Editor Player (currently works on Mac and Windows)
 
-## How to get started
+## How to get started (As base or standalone application)
  1. Read about Firebase at www.firebase.com
  2. Clone this git repo, then form Unity open the Unity project in the `empty-project` folder
  3. Open the `MainScene` and the example `TestScript.cs` to start coding against Firebase!
+
+## How to get started (If you already have an existing project that requires Firebase)
+1. Read about Firebase at www.firebase.com
+2. Import the package "firebase.unitypackage"
 
 ## API Differences
 You will find the API is very similar to the Java/iOS versions except that:
@@ -39,7 +43,7 @@ You will find the API is very similar to the Java/iOS versions except that:
       foo.ChildAdded -= FooChildAdded;
     }
 
-    void FooChildAdded (object sender, ChangedEventArgs e) {
+    void FooChildAdded (object sender, FirebaseChangedEventArgs e) {
       Debug.Log("FooChildAdded: " + e.DataSnapshot.Key);
     }
     ```

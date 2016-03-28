@@ -25,3 +25,8 @@ Contributions made by corporations are covered by a different agreement than
 the one above, the
 [Software Grant and Corporate Contributor License Agreement]
 (https://cla.developers.google.com/about/google-corporate).
+
+###Workflow
+You can contribute to this project in 2 different ways:
+1) You can contribute directly to the empty-project directory with your changes
+2) You can import changes from your existing Unity project in which you use firebase by using the import_to_project.sh <your_unity_plugin_folder> to merge all tracked firebase unity files back into the firebase source project. This is particularly useful if you have fixed a bug in your own project and wish to contribute the fix back to the community. 

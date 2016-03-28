@@ -28,11 +28,11 @@ public class TestScript : MonoBehaviour {
 			Debug.Log ("auth failure!!");
 		});
 
-		firebase.ChildAdded += (object sender, ChangedEventArgs e) => {
+		firebase.ChildAdded += (object sender, FirebaseChangedEventArgs e) => {
 			Debug.Log ("Child added!");
 		};
 
-		firebase.ChildRemoved += (object sender, ChangedEventArgs e) => {
+		firebase.ChildRemoved += (object sender, FirebaseChangedEventArgs e) => {
 			Debug.Log ("Child removed!");
 		};
 

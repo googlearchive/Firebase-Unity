@@ -18,20 +18,20 @@ using System.Collections;
 using System;
 
 public interface IQuery  {
-	event EventHandler<ChangedEventArgs> ValueUpdated;
-	event EventHandler<ChangedEventArgs> ChildAdded;
-	event EventHandler<ChangedEventArgs> ChildRemoved;
-	event EventHandler<ChangedEventArgs> ChildChanged;
-	event EventHandler<ChangedEventArgs> ChildMoved;
-	event EventHandler<ErrorEventArgs> Error;
+	event EventHandler<FirebaseChangedEventArgs> ValueUpdated;
+	event EventHandler<FirebaseChangedEventArgs> ChildAdded;
+	event EventHandler<FirebaseChangedEventArgs> ChildRemoved;
+	event EventHandler<FirebaseChangedEventArgs> ChildChanged;
+	event EventHandler<FirebaseChangedEventArgs> ChildMoved;
+	event EventHandler<FirebaseErrorEventArgs> Error;
 }
 
-public class ChangedEventArgs : EventArgs
+public class FirebaseChangedEventArgs : EventArgs
 {
 	public IDataSnapshot DataSnapshot { get; set; }
 }
 
-public class ErrorEventArgs : EventArgs 
+public class FirebaseErrorEventArgs : EventArgs 
 {
 	public FirebaseError Error { get; set; }
 }

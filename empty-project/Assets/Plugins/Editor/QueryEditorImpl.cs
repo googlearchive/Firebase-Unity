@@ -24,7 +24,7 @@ using System.Threading;
 #if UNITY_EDITOR
 public class QueryEditorImpl : IQuery {
 	IntPtr nativeReference;
-	EventHandler<ChangedEventArgs> valueUpdatedEvent, childAddedEvent, 
+	EventHandler<FirebaseChangedEventArgs> valueUpdatedEvent, childAddedEvent, 
 									childRemovedEvent, childChangedEvent, childMovedEvent;
 	IntPtr stubValueChanged = IntPtr.Zero;
 	IntPtr stubChildEvent = IntPtr.Zero;
@@ -116,7 +116,7 @@ public class QueryEditorImpl : IQuery {
 	private static extern void _FirebaseRemoveChildEvents(IntPtr stub);
 
 	#region IQuery implementation
-	public event EventHandler<ChangedEventArgs> ValueUpdated {
+	public event EventHandler<FirebaseChangedEventArgs> ValueUpdated {
 		add {
 			valueUpdatedEvent += value;
 			
@@ -135,7 +135,7 @@ public class QueryEditorImpl : IQuery {
 		}
 	}
 
-	public event EventHandler<ChangedEventArgs> ChildAdded {
+	public event EventHandler<FirebaseChangedEventArgs> ChildAdded {
 		add {
 			childAddedEvent += value;
 			
@@ -154,7 +154,7 @@ public class QueryEditorImpl : IQuery {
 		}
 	}
 
-	public event EventHandler<ChangedEventArgs> ChildRemoved
+	public event EventHandler<FirebaseChangedEventArgs> ChildRemoved
 	{
 		add {
 			childRemovedEvent += value;
@@ -174,7 +174,7 @@ public class QueryEditorImpl : IQuery {
 		}
 	}
 
-	public event EventHandler<ChangedEventArgs> ChildChanged
+	public event EventHandler<FirebaseChangedEventArgs> ChildChanged
 	{
 		add {
 			childChangedEvent += value;
@@ -194,7 +194,7 @@ public class QueryEditorImpl : IQuery {
 		}
 	}
 
-	public event EventHandler<ChangedEventArgs> ChildMoved
+	public event EventHandler<FirebaseChangedEventArgs> ChildMoved
 	{
 		add {
 			childMovedEvent += value;
@@ -214,7 +214,7 @@ public class QueryEditorImpl : IQuery {
 		}
 	}
 
-	public event System.EventHandler<ErrorEventArgs> Error;
+	public event System.EventHandler<FirebaseErrorEventArgs> Error;
 	#endregion
 
 	[MonoPInvokeCallbackAttribute(typeof(onValueChangedEventHandler))]
@@ -227,10 +227,10 @@ public class QueryEditorImpl : IQuery {
 			Debug.Log ("FirebasePlugin: unable to locate target for value callback.  Make sure you hold a reference to the firebase object.");
 			return;
 		}
-		EventHandler<ChangedEventArgs> handler = target.valueUpdatedEvent;
+		EventHandler<FirebaseChangedEventArgs> handler = target.valueUpdatedEvent;
 		if (handler != null)
 		{
-			handler(target, new ChangedEventArgs() { DataSnapshot = new DataSnapshotEditorImpl(snapshot) });
+			handler(target, new FirebaseChangedEventArgs() { DataSnapshot = new DataSnapshotEditorImpl(snapshot) });
 		}
 	}
 
@@ -244,10 +244,10 @@ public class QueryEditorImpl : IQuery {
 			Debug.Log ("FirebasePlugin: unable to locate target for child event onChildAdded.  Make sure you hold a reference to the firebase object.");
 			return;
 		}
-		EventHandler<ChangedEventArgs> handler = target.childAddedEvent;
+		EventHandler<FirebaseChangedEventArgs> handler = target.childAddedEvent;
 		if (handler != null)
 		{
-			handler(target, new ChangedEventArgs() { DataSnapshot = new DataSnapshotEditorImpl(snapshot) });
+			handler(target, new FirebaseChangedEventArgs() { DataSnapshot = new DataSnapshotEditorImpl(snapshot) });
 		}
 	}
 
@@ -261,10 +261,10 @@ public class QueryEditorImpl : IQuery {
 			Debug.Log ("FirebasePlugin: unable to locate target for child event onChildRemoved.  Make sure you hold a reference to the firebase object.");
 			return;
 		}
-		EventHandler<ChangedEventArgs> handler = target.childRemovedEvent;
+		EventHandler<FirebaseChangedEventArgs> handler = target.childRemovedEvent;
 		if (handler != null)
 		{
-			handler(target, new ChangedEventArgs() { DataSnapshot = new DataSnapshotEditorImpl(snapshot) });
+			handler(target, new FirebaseChangedEventArgs() { DataSnapshot = new DataSnapshotEditorImpl(snapshot) });
 		}
 	}
 
@@ -278,10 +278,10 @@ public class QueryEditorImpl : IQuery {
 			Debug.Log ("FirebasePlugin: unable to locate target for child event onChildChanged.  Make sure you hold a reference to the firebase object.");
 			return;
 		}
-		EventHandler<ChangedEventArgs> handler = target.childChangedEvent;
+		EventHandler<FirebaseChangedEventArgs> handler = target.childChangedEvent;
 		if (handler != null)
 		{
-			handler(target, new ChangedEventArgs() { DataSnapshot = new DataSnapshotEditorImpl(snapshot) });
+			handler(target, new FirebaseChangedEventArgs() { DataSnapshot = new DataSnapshotEditorImpl(snapshot) });
 		}
 	}
 
@@ -295,10 +295,10 @@ public class QueryEditorImpl : IQuery {
 			Debug.Log ("FirebasePlugin: unable to locate target for child event onChildMoved.  Make sure you hold a reference to the firebase object.");
 			return;
 		}
-		EventHandler<ChangedEventArgs> handler = target.childMovedEvent;
+		EventHandler<FirebaseChangedEventArgs> handler = target.childMovedEvent;
 		if (handler != null)
 		{
-			handler(target, new ChangedEventArgs() { DataSnapshot = new DataSnapshotEditorImpl(snapshot) });
+			handler(target, new FirebaseChangedEventArgs() { DataSnapshot = new DataSnapshotEditorImpl(snapshot) });
 		}
 	}
 
@@ -308,10 +308,10 @@ public class QueryEditorImpl : IQuery {
 		if (target == null) {
 			return;
 		}
-		EventHandler<ErrorEventArgs> handler = target.Error;
+		EventHandler<FirebaseErrorEventArgs> handler = target.Error;
 		if (handler != null)
 		{
-			handler(target, new ErrorEventArgs() { Error = new FirebaseError(code, message, details) });
+			handler(target, new FirebaseErrorEventArgs() { Error = new FirebaseError(code, message, details) });
 		}	
 	}
 
