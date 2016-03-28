@@ -163,8 +163,6 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 		_FirebaseSetString (GetiOSObject (), value);
 	}
 
-	// allow people to set their own JSON values in case they want to use a different serialization library
-
 	public void SetJson (string value)
 	{
 		_FirebaseSetJson (GetiOSObject (), value);
