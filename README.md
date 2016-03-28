@@ -101,7 +101,7 @@ You will find the API is very similar to the Java/iOS versions except that:
    }
    ```
 
- * Threading: Unity does not allow game object modifications from any thread other than the Main thread. Firebase operates on a separate thread for performance reasons, and so you can not directly edit game objects from your firebase event responses. You can solve this by adding a Queue with actions to be fulfilled on the main thread. Create a new object inside Unity, add it to the game object you just created, and insert this code:
+ * Threading: Unity does not allow game object modifications from any thread other than the Main thread. Firebase operates on a separate thread for performance reasons, and so you can not directly edit game objects from your firebase event responses. You can solve this by adding a Queue with actions to be fulfilled on the main thread. Create a new script inside Unity, add it to the game object you just added to the scene. Then insert this code.
 
   ```C#
   using UnityEngine;
