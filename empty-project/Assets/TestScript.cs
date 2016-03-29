@@ -22,12 +22,8 @@ public class TestScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	    firebase = Firebase.CreateNew ("https://incandescent-torch-2575.firebaseio.com/testing");
-		firebase.AuthWithPassword ("benwu@google.com", "password", (AuthData auth) => {
-			Debug.Log ("auth success!!" + auth.Uid);
-		}, (FirebaseError e) => {
-			Debug.Log ("auth failure!!");
-		});
+	    firebase = Firebase.CreateNew ("https://get-wrecked.firebaseio.com");
+
 
 		firebase.ChildAdded += (object sender, FirebaseChangedEventArgs e) => {
 			Debug.Log ("Child added with value: " + e.DataSnapshot.StringValue);
@@ -37,15 +33,15 @@ public class TestScript : MonoBehaviour {
 			Debug.Log ("Child removed!");
 		};
 
-		firebase.SetValue ("SetValue working?");
+		//firebase.SetValue ("SetValue working?");
 		Dictionary<string, object> testDictionary = new Dictionary<string, object>()
 		{
 			{ "key1", "value1"},
-			{ "key1", "value2"},
-			{ "key1", "value3"}
+			{ "key2", "value2"},
+			{ "key3", "value3"}
 		};
-		firebase.SetValue(testDictionary);
-		//firebase.SetJsonValue("{\"example_child\":{\"child_working\" : true}}");
+		//firebase.SetValue(testDictionary);
+		firebase.SetJsonValue("{\"example_child\":{\"child_working\" : true}}");
 	}
 	
 	// Update is called once per frame
