@@ -163,9 +163,10 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 		_FirebaseSetString (GetiOSObject (), value);
 	}
 
-	public void SetJsonValue (string json)
-	{
-		_FirebaseSetJson (GetiOSObject (), json);
+	public void SetJsonValue (string jsonString)
+	{	
+		Debug.Log (jsonString);
+		_FirebaseSetJson (GetiOSObject (), jsonString);
 	}
 
 	public void SetValue (IDictionary<string, object> value) {

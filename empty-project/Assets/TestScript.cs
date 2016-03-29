@@ -26,7 +26,7 @@ public class TestScript : MonoBehaviour {
 
 
 		firebase.ChildAdded += (object sender, FirebaseChangedEventArgs e) => {
-			Debug.Log ("Child added with value: " + e.DataSnapshot.StringValue);
+			Debug.Log ("Child added ...");
 		};
 
 		firebase.ChildRemoved += (object sender, FirebaseChangedEventArgs e) => {
