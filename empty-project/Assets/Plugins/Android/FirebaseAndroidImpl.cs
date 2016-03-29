@@ -106,6 +106,12 @@ internal class FirebaseAndroidImpl : QueryAndroidImpl, IFirebase
 		GetJavaObject().Call ("setValue", jsonObject);
 	}
 	
+
+	public void SetJson (string jsonString) {
+		AndroidJavaObject jsonObject = GetObjectMapper ().Call<AndroidJavaObject> ("readValue", jsonString, GetObjectClass ());
+		GetJavaObject().Call ("setValue", jsonObject);
+	}
+
 	public void SetValue (float value, string priority, Action<FirebaseError, IFirebase> listener)
 	{
 		GetJavaObject().Call ("setValue", new AndroidJavaObject ("java.lang.Float", value), priority, new CompletionListener(listener));
