@@ -15,6 +15,7 @@ limitations under the License.
 */
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TestScript : MonoBehaviour {
 	IFirebase firebase;
@@ -37,7 +38,14 @@ public class TestScript : MonoBehaviour {
 		};
 
 		firebase.SetValue ("SetValue working?");
-		firebase.SetJson("{\"example_child\":{\"child_working\" : true}}");
+		Dictionary<string, object> testDictionary = new Dictionary<string, object>()
+		{
+			{ "key1", "value1"},
+			{ "key1", "value2"},
+			{ "key1", "value3"}
+		};
+		firebase.SetValue(testDictionary);
+		//firebase.SetJsonValue("{\"example_child\":{\"child_working\" : true}}");
 	}
 	
 	// Update is called once per frame

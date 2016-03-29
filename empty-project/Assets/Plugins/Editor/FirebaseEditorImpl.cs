@@ -149,8 +149,9 @@ public class FirebaseEditorImpl : QueryEditorImpl, IFirebase {
 	}
 
 
-	public void SetJson (string value) {
-		_FirebaseSetJson (GetEditorObject (), value);
+	public void SetJsonValue (string json)
+	{
+		_FirebaseSetJson (GetEditorObject (), json);
 	}
 
 	public void SetValue (IDictionary<string, object> value) {
