@@ -148,6 +148,12 @@ public class FirebaseEditorImpl : QueryEditorImpl, IFirebase {
 		_FirebaseSetString (GetEditorObject (), value);
 	}
 
+
+	public void SetJsonValue (string json)
+	{
+		_FirebaseSetJson (GetEditorObject (), json);
+	}
+
 	public void SetValue (IDictionary<string, object> value) {
 		string jsonString = MiniJSON.Json.Serialize (value);
 		_FirebaseSetJson (GetEditorObject (), jsonString);

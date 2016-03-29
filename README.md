@@ -49,7 +49,9 @@ You will find the API is very similar to the Java/iOS versions except that:
     ```
    
 ## Troubleshooting
- * You are not receiving events, its very likely you allowed your Firebase reference to GC.
+ * If you are not receiving events, it can either be because your event response call contains an exception, or because Garbage Collection is removing the references to your firebase. You can solve this by storing the firebase objects in variables. 
+ 
+   First, make sure you are referencing objects correctly. 
 
    Instead of this:
    ```C#
@@ -61,6 +63,77 @@ You will find the API is very similar to the Java/iOS versions except that:
    classMember = new Firebase("mypath");  //holds a reference until the behavior is released
    classMember.ValueChanged += (...) => {...} ;
    ```
+
+   But beware, if you are going to access child objects you need to store these in variables too, otherwise GC will delete the reference as well. So instead of this:
+  ```C#
+   classMember = new Firebase("mypath");  //holds a reference until the behavior is released
+   classMember.Child("somechild").ValueChanged += (...) => {...} ;
+   ```
+
+   do this
+
+   ```C#
+   IFirebase fb;
+   IFirebase sampleChild;
+   void someFunction() {
+       fb = new Firebase("mypath");  //holds a reference until the behavior is released
+       sampleChild = fb.Child("somechild"); // holds another child reference so GC doens't remove the reference to the child
+       sampleChild.ValueChanged += (...) => {...} ;
+   }
+   ```
+
+ If you are referencing objects correctly, you will likely need to re-open your Unity project because your event response function contained an error. At this moment an error in the event response function causes Firebase Unity to stop working during your entire Unity Editor session. You can debug this by catching the exception on the highest level, re-opening your Unity project, and running your scene again. You can now see the error and fix it. Note that you will need to re-open your project on every attempt until we fix this bug. After you have resolved your exception, your firebase event should be received normally again. 
+
+ For example: 
+   ```C#
+   IFirebase fb;
+   IFirebase sampleChild;
+   void someFunction() {
+       try {
+           fb = new Firebase("mypath");  //holds a reference until the behavior is released
+           sampleChild = fb.Child("somechild"); // holds another child reference so GC doens't remove the reference to the child
+           sampleChild.ValueChanged += (...) => {...} ;
+           someBadFunction();
+      } catch(Exception e) {
+        Debug.Log("Firebase Event Exception:");
+        Debug.Log(e);
+      }
+   }
+   ```
+
+ * Threading: Unity does not allow game object modifications from any thread other than the Main thread. Firebase operates on a separate thread for performance reasons, and so you can not directly edit game objects from your firebase event responses. You can solve this by adding a Queue with actions to be fulfilled on the main thread. Create a new script inside Unity, add it to the game object you just added to the scene. Then insert this code.
+
+  ```C#
+  using UnityEngine;
+  using System.Collections;
+  using System.Collections.Generic;
+  using System;
+
+  public class ExampleMainThreadQueue : MonoBehaviour {
+
+    public readonly static Queue<Action> ExecuteOnMainThread = new Queue<Action>();
+
+    public void Update()
+    {
+      // dispatch stuff on main thread
+      while (ExecuteOnMainThread.Count > 0)
+      {
+        ExecuteOnMainThread.Dequeue().Invoke();
+      }
+    }
+  }
+
+  ```
+
+  You can now execute function on the main thread using coroutines. 
+
+  ```C#
+  ExampleMainThreadQueue.ExecuteOnMainThread.Enqueue(() => {  
+      StartCoroutine(somecoroutine);
+  } );
+  ```
+
+
  * iOS: XCode fails to link.  Please follow instructions located at: https://www.firebase.com/docs/ios/alternate-setup.html  You will need to do this again if you do a full build/replace from Unity, but an incremental build will keep these settings.
  * Mac: The plugin does not appear to be working at all for the player, but works for iOS and Android<p/>
   It could be that you have not installed the Java6 legacy runtime https://support.apple.com/kb/DL1572?locale=en_US
