@@ -100,7 +100,7 @@ You will find the API is very similar to the Java/iOS versions except that:
    }
    ```
 
- * Threading: Unity does not allow game object modifications from any thread other than the Main thread. Firebase operates on a separate thread for performance reasons, and so you can not directly edit game objects from your firebase event responses. You can solve this by adding a Queue with actions to be fulfilled on the main thread. You can use the following (unofficial) library for doing so: https://github.com/PimDeWitte/UnityMainThreadDispatcher
+ * Threading: Unity does not allow game object modifications from any thread other than the Main thread. Firebase operates on a separate thread for performance reasons, and so you can not directly edit game objects from your firebase event responses. You can solve this by adding a Queue with actions to be fulfilled on the main thread. You can use the following (unofficial) class for doing so: https://github.com/PimDeWitte/UnityMainThreadDispatcher
 
 
   You can now execute function on the main thread like this:
