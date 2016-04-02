@@ -106,7 +106,7 @@ You will find the API is very similar to the Java/iOS versions except that:
   You can now execute function on the main thread like this:
 
   ```C#
-public IEnumerator ThisWillBeExecutedOnTheMainThread() {
+	public IEnumerator ThisWillBeExecutedOnTheMainThread() {
 		Debug.Log ("This is executed from the main thread");
 		yield return null;
 	}
