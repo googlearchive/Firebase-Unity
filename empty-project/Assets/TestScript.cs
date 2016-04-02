@@ -36,7 +36,8 @@ public class TestScript : MonoBehaviour {
 			Debug.Log ("Child removed!");
 		};
 
-		//firebase.SetValue ("working?");
+		firebase.SetValue ("SetValue working?");
+		firebase.SetJsonValue("{\"example_child\":{\"child_working\" : true}}");
 	}
 	
 	// Update is called once per frame
