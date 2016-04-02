@@ -95,43 +95,25 @@ You will find the API is very similar to the Java/iOS versions except that:
            sampleChild.ValueChanged += (...) => {...} ;
            someBadFunction();
       } catch(Exception e) {
-        Debug.Log("Firebase Event Exception:");
-        Debug.Log(e);
+        Debug.LogError(e);
       }
    }
    ```
 
- * Threading: Unity does not allow game object modifications from any thread other than the Main thread. Firebase operates on a separate thread for performance reasons, and so you can not directly edit game objects from your firebase event responses. You can solve this by adding a Queue with actions to be fulfilled on the main thread. Create a new script inside Unity, add it to the game object you just added to the scene. Then insert this code.
+ * Threading: Unity does not allow game object modifications from any thread other than the Main thread. Firebase operates on a separate thread for performance reasons, and so you can not directly edit game objects from your firebase event responses. You can solve this by adding a Queue with actions to be fulfilled on the main thread. You can use the following (unofficial) class for doing so: https://github.com/PimDeWitte/UnityMainThreadDispatcher
+
+
+  You can now execute function on the main thread like this:
 
   ```C#
-  using UnityEngine;
-  using System.Collections;
-  using System.Collections.Generic;
-  using System;
-
-  public class ExampleMainThreadQueue : MonoBehaviour {
-
-    public readonly static Queue<Action> ExecuteOnMainThread = new Queue<Action>();
-
-    public void Update()
-    {
-      // dispatch stuff on main thread
-      while (ExecuteOnMainThread.Count > 0)
-      {
-        ExecuteOnMainThread.Dequeue().Invoke();
-      }
-    }
-  }
-
-  ```
-
-  You can now execute function on the main thread using coroutines. 
-
-  ```C#
-  ExampleMainThreadQueue.ExecuteOnMainThread.Enqueue(() => {  
-      StartCoroutine(somecoroutine);
-  } );
-  ```
+public IEnumerator ThisWillBeExecutedOnTheMainThread() {
+		Debug.Log ("This is executed from the main thread");
+		yield return null;
+	}
+	public void ExampleMainThreadCall() {
+		UnityMainThreadDispatcher.Instance().Enqueue(ThisWillBeExecutedOnTheMainThread()); 
+	}
+```
 
 
  * iOS: XCode fails to link.  Please follow instructions located at: https://www.firebase.com/docs/ios/alternate-setup.html  You will need to do this again if you do a full build/replace from Unity, but an incremental build will keep these settings.
