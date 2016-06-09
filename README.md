@@ -14,6 +14,7 @@ Welcome to Firebase (www.firebase.com) on Unity3d plugin, which supports:
 ## How to get started (If you already have an existing project that requires Firebase)
 1. Read about Firebase at www.firebase.com
 2. Import the package "firebase.unitypackage"
+3. If you already have an existing AndroidManifest.xml file, simply add the permission ``<uses-permission android:name="android.permission.INTERNET" />  ``. In this case you do not have to import the AndroidManifest.xml file because it might overwrite your own. 
 
 ## API Differences
 You will find the API is very similar to the Java/iOS versions except that:
