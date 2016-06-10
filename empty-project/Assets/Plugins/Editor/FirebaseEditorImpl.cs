@@ -148,6 +148,10 @@ public class FirebaseEditorImpl : QueryEditorImpl, IFirebase {
 		_FirebaseSetString (GetEditorObject (), value);
 	}
 
+	public void Remove ()
+	{
+		_FirebaseSetJson (GetEditorObject (), "{}");
+	}
 
 	public void SetJsonValue (string json)
 	{

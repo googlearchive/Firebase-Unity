@@ -28,6 +28,7 @@ public interface IFirebase : IQuery
 
 	IFirebase Push ();
 	void SetValue (string value);
+	void Remove ();
 	void SetJsonValue (string json);
 	void SetValue (float value);
 	void SetValue (IDictionary<string, object> value);
