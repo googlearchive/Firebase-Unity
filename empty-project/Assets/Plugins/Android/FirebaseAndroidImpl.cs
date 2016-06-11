@@ -107,8 +107,7 @@ internal class FirebaseAndroidImpl : QueryAndroidImpl, IFirebase
 	}
 	
 	public void Remove () {
-		AndroidJavaObject jsonObject = GetObjectMapper ().Call<AndroidJavaObject> ("readValue", "{}", GetObjectClass ());
-		GetJavaObject().Call ("setValue", jsonObject);
+		SetJsonValue ("{}");
 	}
 
 	public void SetJsonValue (string jsonString) {
