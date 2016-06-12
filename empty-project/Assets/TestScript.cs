@@ -37,6 +37,7 @@ public class TestScript : MonoBehaviour {
 		};
 
 		firebase.SetValue ("SetValue working?");
+		firebase.Remove ();
 		firebase.SetJsonValue("{\"example_child\":{\"child_working\" : true}}");
 	}
 	
