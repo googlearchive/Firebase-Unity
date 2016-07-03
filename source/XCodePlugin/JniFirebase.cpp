@@ -383,7 +383,7 @@ void JniFirebase::GoOffline() {
                    &s_goOffline)) {
         return;
     }
-    env->CallStaticVoidMethod(m_firebase, s_goOffline);
+    env->CallStaticVoidMethod(NULL, s_goOffline);
 }
 
 jmethodID JniFirebase::s_goOnline = NULL;
@@ -393,5 +393,5 @@ void JniFirebase::GoOnline() {
                    &s_goOnline)) {
         return;
     }
-    env->CallStaticVoidMethod(m_firebase, s_goOnline);
+    env->CallStaticVoidMethod(NULL, s_goOnline);
 }
