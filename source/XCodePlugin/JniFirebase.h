@@ -55,6 +55,9 @@ public:
 	uint64_t GetAuthExpiration();
     
     void UnAuth();
+
+    static void GoOffline();
+    static void GoOnline();
     
     jobject getJniObject() {
         return m_firebase;
@@ -123,7 +126,9 @@ private:
     
     static jmethodID s_firebaseGetAuth;
 
-    
     static jmethodID s_unAuth;
+
+    static jmethodID s_goOffline;
+    static jmethodID s_goOnline;
 };
 #endif /* defined(__XCodePlugin__JniFirebase__) */

@@ -156,6 +156,22 @@ bool GetMethod(JNIEnv* env, jclass clazz, const char* methodName, const char* me
     return (*pMethod) != NULL;
 }
 
+inline
+bool GetStaticMethod(JNIEnv* env, jclass clazz, const char* methodName, const char* methodSig, jmethodID* pMethod) {
+    if (!env) {
+        return false;
+    }
+    if (*pMethod) {
+        return true;
+    }
+    lock<std::mutex> lock(g_lock);
+    if (*pMethod) {
+        return true;
+    }
+    *pMethod = env->GetStaticMethodID(clazz, methodName, methodSig);
+    return (*pMethod) != NULL;
+}
+
 const char* CallToString(JNIEnv* env, jobject localRef) ;
 
 const char* GetJNIExceptionDescription(JNIEnv* env, jthrowable exception );

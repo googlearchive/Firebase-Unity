@@ -41,4 +41,7 @@ public interface IFirebase : IQuery
 
 	void UnAuth();
 	AuthData Auth { get; }
+
+	void GoOffline ();
+	void GoOnline ();
 }

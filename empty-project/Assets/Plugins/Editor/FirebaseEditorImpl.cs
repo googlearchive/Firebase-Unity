@@ -105,6 +105,11 @@ public class FirebaseEditorImpl : QueryEditorImpl, IFirebase {
 	private static extern long _FirebaseGetAuthExpiration(IntPtr firebase);
 	[DllImport ("FirebaseProxy")]
 	private static extern void _FirebaseUnAuth(IntPtr firebase);
+
+	[DllImport ("FirebaseProxy")]
+	private static extern void _FirebaseGoOffline();
+	[DllImport ("FirebaseProxy")]
+	private static extern void _FirebaseGoOnline();
 	
 	#endregion
 
@@ -219,6 +224,16 @@ public class FirebaseEditorImpl : QueryEditorImpl, IFirebase {
 			return new AuthData(_FirebaseGetAuthToken(GetEditorObject()), _FirebaseGetAuthUid(GetEditorObject()),
 			                     _FirebaseGetAuthExpiration(GetEditorObject()));
 		}
+	}
+
+	public void GoOffline ()
+	{
+		_FirebaseGoOffline ();
+	}
+
+	public void GoOnline ()
+	{
+		_FirebaseGoOnline ();
 	}
 	
 	#endregion
