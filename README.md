@@ -1,4 +1,7 @@
 # firebase-unity
+
+The Firebase Real-Time Database Unity plugin does not currently support the latest Firebase SDK.  We are working on an update which should be available around September 2016.  Follow this project on github for updates.
+
 Firebase inside Unity3d!
 
 Welcome to Firebase (www.firebase.com) on Unity3d plugin, which supports:
