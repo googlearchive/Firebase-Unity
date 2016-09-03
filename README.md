@@ -1,5 +1,9 @@
 # firebase-unity
 
+* 9/2 Update. Now that September is here, I thought it would be good to give you an update of where we are with the promised update to this repository. 
+ * We are still on track for a September update to this repo.  It will be an update that supports the new version of Firebase Realtime Database.  We want to make sure the update meets your expectations and there is additional testing and fixes we want to do. To make sure that we’ve set expectations appropriately with you, this will be a BETA quality release with a general availability (release) date to follow.
+ * I look forward to showing you what we’ve been up to!
+
 The Firebase Real-Time Database Unity plugin does not currently support the latest Firebase SDK.  We are working on an update which should be available around September 2016.  Follow this project on github for updates.
 
 Firebase inside Unity3d!
