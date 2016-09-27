@@ -1,5 +1,7 @@
 # firebase-unity
 
+* 9/27 Update. September is almost over, and we’ve been hard at work on improving Unity support for Firebase. We’re now at the point where we’re putting the final touches on our API and ensuring the documentation meets your needs.  However, there is still some work to get done, so we’ll be pushing the release out approximately two weeks to mid-October.
+ * We realize this is disappointing, but we’ll use the extra time enhancing the usability of the framework and documentation. We do apologize for the inconvenience and appreciate your continued support. We are doing our best to deliver the best of Firebase to you.
 * 9/2 Update. Now that September is here, I thought it would be good to give you an update of where we are with the promised update to this repository. 
  * We are still on track for a September update to this repo.  It will be an update that supports the new version of Firebase Realtime Database.  We want to make sure the update meets your expectations and there is additional testing and fixes we want to do. To make sure that we’ve set expectations appropriately with you, this will be a BETA quality release with a general availability (release) date to follow.
  * I look forward to showing you what we’ve been up to!
