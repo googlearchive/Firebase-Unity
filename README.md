@@ -1,5 +1,6 @@
 # firebase-unity
 
+* 10/14 Quick update that we’re still working hard to finalize the API and documentation to bring Unity support for Firebase. We’ve made great progress so far, but want to make sure we deliver the best possible experience for your game development. Expect to hear from us soon and thanks for your continued patience! 
 * 9/27 Update. September is almost over, and we’ve been hard at work on improving Unity support for Firebase. We’re now at the point where we’re putting the final touches on our API and ensuring the documentation meets your needs.  However, there is still some work to get done, so we’ll be pushing the release out approximately two weeks to mid-October.
  * We realize this is disappointing, but we’ll use the extra time enhancing the usability of the framework and documentation. We do apologize for the inconvenience and appreciate your continued support. We are doing our best to deliver the best of Firebase to you.
 * 9/2 Update. Now that September is here, I thought it would be good to give you an update of where we are with the promised update to this repository. 
