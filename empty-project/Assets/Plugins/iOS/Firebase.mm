@@ -269,6 +269,14 @@ extern "C" {
         [myFirebaseRef unauth];
     }
     
+    void _FirebaseGoOffline() {
+        [Firebase goOffline];
+    }
+    
+    void _FirebaseGoOnline() {
+        [Firebase goOnline];
+    }
+    
     float _DataSnapshotGetFloatValue (void* datasnapshot) {
         FDataSnapshot *snapshotRef = (__bridge FDataSnapshot*) (datasnapshot);
         return [[snapshotRef value] floatValue];

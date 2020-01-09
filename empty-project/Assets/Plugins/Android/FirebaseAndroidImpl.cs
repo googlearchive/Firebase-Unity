@@ -172,6 +172,16 @@ internal class FirebaseAndroidImpl : QueryAndroidImpl, IFirebase
 			return new AuthData(token, uid, expiration);
 		}
 	}
+
+	public void GoOffline ()
+	{
+		GetJavaObject ().CallStatic ("goOffline");
+	}
+
+	public void GoOnline ()
+	{
+		GetJavaObject ().CallStatic ("goOnline");
+	}
 	#endregion	
 	
 	class CompletionListener : AndroidJavaProxy {

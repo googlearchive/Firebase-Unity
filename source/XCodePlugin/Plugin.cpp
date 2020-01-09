@@ -246,6 +246,18 @@ void _FirebaseUnAuth(void* firebase) {
     jniFirebase->UnAuth();
 }
 
+void _FirebaseGoOffline(void* firebase) {
+    if (!firebase) return;
+    JniFirebase* jniFirebase = (JniFirebase*) firebase;
+    jniFirebase->GoOffline();
+}
+
+void _FirebaseGoOnline(void* firebase) {
+    if (!firebase) return;
+    JniFirebase* jniFirebase = (JniFirebase*) firebase;
+    jniFirebase->GoOnline();
+}
+
 float _DataSnapshotGetFloatValue (void* datasnapshot) {
     if (!datasnapshot) return 0;
     JniDataSnapshot* jniDataSnapshot = (JniDataSnapshot*)datasnapshot;

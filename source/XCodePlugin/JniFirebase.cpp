@@ -376,4 +376,22 @@ void JniFirebase::UnAuth() {
     env->CallVoidMethod(m_firebase, s_unAuth);
 }
 
+jmethodID JniFirebase::s_goOffline = NULL;
+void JniFirebase::GoOffline() {
+    auto env = getEnv();
+    if (!GetStaticMethod(env, s_firebaseClass, "goOffline", "()V",
+                   &s_goOffline)) {
+        return;
+    }
+    env->CallStaticVoidMethod(NULL, s_goOffline);
+}
 
+jmethodID JniFirebase::s_goOnline = NULL;
+void JniFirebase::GoOnline() {
+    auto env = getEnv();
+    if (!GetMethod(env, s_firebaseClass, "goOnline", "()V",
+                   &s_goOnline)) {
+        return;
+    }
+    env->CallStaticVoidMethod(NULL, s_goOnline);
+}

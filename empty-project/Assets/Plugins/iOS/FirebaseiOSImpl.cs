@@ -124,6 +124,12 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 	[DllImport ("__Internal")]
 	private static extern void _FirebaseUnAuth( IntPtr firebase);
 
+	[DllImport ("__Internal")]
+	private static extern void _FirebaseGoOffline();
+
+	[DllImport ("__Internal")]
+	private static extern void _FirebaseGoOnline();
+
 	#endregion
 
 	#region IFirebase implementation
@@ -234,6 +240,16 @@ internal class FirebaseiOSImpl : QueryiOSImpl, IFirebase {
 			return new AuthData(_FirebaseGetAuthToken(GetiOSObject()), _FirebaseGetAuthUid(GetiOSObject()),
 			                    _FirebaseGetAuthExpiration(GetiOSObject()));
 		}
+	}
+
+	public void GoOffline ()
+	{
+		_FirebaseGoOffline ();
+	}
+
+	public void GoOnline ()
+	{
+		_FirebaseGoOnline ();
 	}
 
 	#endregion
